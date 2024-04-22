@@ -1,5 +1,4 @@
-﻿using System.Reflection.Emit;
-using System.Text.Json;
+﻿using System.Text.Json;
 using Database.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -44,11 +43,11 @@ namespace Database
             FillEntities<Role>(modelBuilder, "roles");
             FillEntities<Category>(modelBuilder, "categories");
             FillEntities<CoworkingZone>(modelBuilder, "coworkingZones");
-            FillEntities<Employee>(modelBuilder, "employees");
             FillEntities<Position>(modelBuilder, "positions");
-            FillEntities<Request>(modelBuilder, "requests");
             FillEntities<Service>(modelBuilder, "services");
             FillEntities<User>(modelBuilder, "users");
+            FillEntities<Employee>(modelBuilder, "employees");
+            FillEntities<Request>(modelBuilder, "requests");
         }
 
         private void FillEntities<T>(ModelBuilder modelBuilder, string jsonName) where T : class

@@ -1,7 +1,10 @@
-﻿namespace Database.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Database.Entities
 {
     public class Service : BaseEntity
     {
+        [ForeignKey(nameof(Category))]
         public int CategoryId { get; set; }
 
         public string Name { get; set; } = null!;
@@ -11,5 +14,7 @@
         public int Amount { get; set; }
 
         public string? ImagePath { get; set; }
+
+        public Category Category { get; set; }
     }
 }

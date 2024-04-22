@@ -16,6 +16,9 @@ namespace Database.Entities
 
         public string Password { get; set; } = null!;
 
+        [ForeignKey(nameof(Position))]
         public int PositionId { get; set; }
+
+        public Position Position { get; set; }
     }
 }
