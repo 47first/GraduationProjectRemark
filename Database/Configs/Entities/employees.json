@@ -1,0 +1,32 @@
+[
+  {
+    "Id": 1,
+    "FirstName": "Hello",
+    "MiddleName": "Hello",
+    "LastName": "Hello",
+    "Phone": "Hello",
+    "Login": "Hello",
+    "Password": "Hello",
+    "PositionId": 1
+  },
+  {
+    "Id": 2,
+    "FirstName": "Hello",
+    "MiddleName": "Hello",
+    "LastName": "Hello",
+    "Phone": "Hello",
+    "Login": "Hello",
+    "Password": "Hello",
+    "PositionId": 2
+  },
+  {
+    "Id": 3,
+    "FirstName": "Hello",
+    "MiddleName": "Hello",
+    "LastName": "Hello",
+    "Phone": "Hello",
+    "Login": "Hello",
+    "Password": "Hello",
+    "PositionId": 3
+  }
+]

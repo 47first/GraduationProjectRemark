@@ -1,0 +1,26 @@
+[
+  {
+    "Id": 1,
+    "CategoryId": 1,
+    "Name": "Name",
+    "Description": "Description",
+    "Amount": 3,
+    "ImagePath": "image.png"
+  },
+  {
+    "Id": 2,
+    "CategoryId": 1,
+    "Name": "Name",
+    "Description": "Description",
+    "Amount": 3,
+    "ImagePath": "image.png"
+  },
+  {
+    "Id": 3,
+    "CategoryId": 1,
+    "Name": "Name",
+    "Description": "Description",
+    "Amount": 3,
+    "ImagePath": "image.png"
+  }
+]

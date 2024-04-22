@@ -1,12 +1,12 @@
-﻿using Database.Entities;
+﻿using System.Reflection.Emit;
+using System.Text.Json;
+using Database.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Database
 {
     public class DatabaseContext : DbContext
     {
-        private const string CONNECTION_STRING = "Data Source=DESKTOP-G3R3SBD;Initial Catalog=Test;Integrated Security=True;Trust Server Certificate=True";
-
         public DbSet<Category> Categories { get; set; } = null!;
 
         public DbSet<CoworkingZone> CoworkingZones { get; set; } = null!;
@@ -32,27 +32,46 @@ namespace Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(CONNECTION_STRING);
+            var path = Path.Combine(Environment.CurrentDirectory, "Configs", "connectionString.json");
+
+            var connectionStrings = ReadFromFile<ConnectionStrings>(path);
+
+            optionsBuilder.UseSqlServer(connectionStrings.Default);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Role>().HasData(
-                new Role
-                {
-                    Id = 1,
-                    Title = "Администратор"
-                },
-                new Role
-                {
-                    Id = 2,
-                    Title = "Менеджер"
-                },
-                new Role
-                {
-                    Id = 3,
-                    Title = "Пользователь"
-                });
+            FillEntities<Role>(modelBuilder, "roles");
+            FillEntities<Category>(modelBuilder, "categories");
+            FillEntities<CoworkingZone>(modelBuilder, "coworkingZones");
+            FillEntities<Employee>(modelBuilder, "employees");
+            FillEntities<Position>(modelBuilder, "positions");
+            FillEntities<Request>(modelBuilder, "requests");
+            FillEntities<Service>(modelBuilder, "services");
+            FillEntities<User>(modelBuilder, "users");
+        }
+
+        private void FillEntities<T>(ModelBuilder modelBuilder, string jsonName) where T : class
+        {
+            var entities = ReadEntities<T[]>(jsonName);
+
+            modelBuilder
+                .Entity<T>()
+                .HasData(entities);
+        }
+
+        private T ReadEntities<T>(string jsonName)
+        {
+            var path = Path.Combine(Environment.CurrentDirectory, "Configs", "Entities", $"{jsonName}.json");
+
+            return ReadFromFile<T>(path);
+        }
+
+        private T ReadFromFile<T>(string path)
+        {
+            var fileContent = File.ReadAllText(path);
+
+            return JsonSerializer.Deserialize<T>(fileContent);
         }
     }
 }

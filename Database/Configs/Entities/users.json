@@ -1,0 +1,32 @@
+[
+  {
+    "Id": 1,
+    "FirstName": "FirstName",
+    "MiddleName": "FirstName",
+    "LastName": "FirstName",
+    "Phone": "89025440904",
+    "Email": "FirstName",
+    "Login": "FirstName",
+    "Password": "FirstName"
+  },
+  {
+    "Id": 2,
+    "FirstName": "FirstName",
+    "MiddleName": "FirstName",
+    "LastName": "FirstName",
+    "Phone": "89025440904",
+    "Email": "FirstName",
+    "Login": "FirstName",
+    "Password": "FirstName"
+  },
+  {
+    "Id": 3,
+    "FirstName": "FirstName",
+    "MiddleName": "FirstName",
+    "LastName": "FirstName",
+    "Phone": "89025440904",
+    "Email": "FirstName",
+    "Login": "FirstName",
+    "Password": "FirstName"
+  }
+]
