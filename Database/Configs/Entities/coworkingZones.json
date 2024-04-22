@@ -1,23 +1,23 @@
 [
   {
     "Id": 1,
-    "Name": "Name1",
-    "Description": "Description1",
-    "Address": "Address1",
-    "ContactNumber": "ContactNumber1"
+    "Name": "Коворкинг Зона 'Пасита'",
+    "Description": "Большая коворкинг зона до 18 человек одновременно",
+    "Address": "Прибалтийская 8, д 4",
+    "ContactNumber": "89009990099"
   },
   {
     "Id": 2,
-    "Name": "Name2",
-    "Description": "Description2",
-    "Address": "Address2",
-    "ContactNumber": "ContactNumber2"
+    "Name": "Коворкинг Зона 'Бебра'",
+    "Description": "Средняя коворкинг зона до 12 человек одновременно",
+    "Address": "Пр. Волжский 4, д 1",
+    "ContactNumber": "89009990098"
   },
   {
     "Id": 3,
-    "Name": "Name3",
-    "Description": "Description3",
-    "Address": "Address3",
-    "ContactNumber": "ContactNumber3"
+    "Name": "Коворкинг Зона 'Марсик'",
+    "Description": "Маленькая коворкинг зона до 6 человек одновременно",
+    "Address": "Прибалтийская 18, д 3",
+    "ContactNumber": "89009990097"
   }
 ]

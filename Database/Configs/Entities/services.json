@@ -2,24 +2,24 @@
   {
     "Id": 1,
     "CategoryId": 1,
-    "Name": "Name",
-    "Description": "Description",
-    "Amount": 3,
+    "Name": "Забронировать место",
+    "Description": "Бронирование места в коворкинг зоне",
+    "Amount": 4,
     "ImagePath": "image.png"
   },
   {
     "Id": 2,
     "CategoryId": 1,
-    "Name": "Name",
-    "Description": "Description",
-    "Amount": 3,
+    "Name": "Забронировать компьютер",
+    "Description": "Бронирование места за компьютерным столом",
+    "Amount": 2,
     "ImagePath": "image.png"
   },
   {
     "Id": 3,
-    "CategoryId": 1,
-    "Name": "Name",
-    "Description": "Description",
+    "CategoryId": 2,
+    "Name": "Обед",
+    "Description": "Заказать обед",
     "Amount": 3,
     "ImagePath": "image.png"
   }
