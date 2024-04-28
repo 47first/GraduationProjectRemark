@@ -1,5 +1,4 @@
-﻿using Database;
-using WinFormsApplication.Components;
+﻿using WinFormsApplication.Services.Impl;
 
 namespace WinFormsApplication.Forms
 {
@@ -8,15 +7,30 @@ namespace WinFormsApplication.Forms
         public Home()
         {
             InitializeComponent();
+
+            if (AuthorizationService.Instance.IsAuthorized == false)
+            {
+                ShowInTaskbar = false;
+                Opacity = 0;
+
+                var authrozationForm = new AuthorizationForm();
+
+                authrozationForm.Show();
+                authrozationForm.FormClosed += OnAuthorizationFormClosed;
+            }
+        }
+
+        private void OnAuthorizationFormClosed(object? sender, FormClosedEventArgs e)
+        {
+            ShowInTaskbar = true;
+            Opacity = 1;
+
+            Focus();
         }
 
         private void servicesPage_Enter(object sender, EventArgs e)
         {
             servicesPage1.EnterPage();
-        }
-
-        private void Home_Resize(object sender, EventArgs e)
-        {
         }
     }
 }

@@ -128,7 +128,7 @@
             // 
             quitButton.BackColor = Color.Transparent;
             quitButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            quitButton.ForeColor = SystemColors.InactiveCaptionText;
+            quitButton.ForeColor = SystemColors.ControlLightLight;
             quitButton.Image = Properties.Images.quit;
             quitButton.ImageTransparentColor = Color.Magenta;
             quitButton.Margin = new Padding(0);
@@ -170,8 +170,6 @@
             MinimumSize = new Size(300, 200);
             Name = "Home";
             Text = "Коворкинг зона";
-            SizeChanged += Home_Resize;
-            Resize += Home_Resize;
             pagesControl.ResumeLayout(false);
             servicesPage.ResumeLayout(false);
             header.ResumeLayout(false);

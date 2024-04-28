@@ -121,7 +121,6 @@
             Controls.Add(titleLabel);
             MaximizeBox = false;
             Name = "AuthorizationForm";
-            Opacity = 0.5D;
             Text = "Авторизация";
             ResumeLayout(false);
             PerformLayout();
