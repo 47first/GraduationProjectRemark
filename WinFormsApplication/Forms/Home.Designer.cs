@@ -69,7 +69,7 @@
             // 
             // servicesPage
             // 
-            servicesPage.BackColor = SystemColors.GradientActiveCaption;
+            servicesPage.BackColor = SystemColors.Window;
             servicesPage.Controls.Add(servicesSplitContatiner);
             servicesPage.Font = new Font("Calibri", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             servicesPage.Location = new Point(4, 29);
@@ -226,6 +226,8 @@
             MinimumSize = new Size(300, 200);
             Name = "Home";
             Text = "Коворкинг зона";
+            SizeChanged += Home_Resize;
+            Resize += Home_Resize;
             pagesControl.ResumeLayout(false);
             servicesPage.ResumeLayout(false);
             servicesSplitContatiner.Panel1.ResumeLayout(false);

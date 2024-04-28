@@ -47,7 +47,7 @@ namespace Database
             FillEntities<Service>(modelBuilder, "services");
             FillEntities<User>(modelBuilder, "users");
             FillEntities<Employee>(modelBuilder, "employees");
-            //FillEntities<Request>(modelBuilder, "requests");
+            FillEntities<Request>(modelBuilder, "requests");
         }
 
         private void FillEntities<T>(ModelBuilder modelBuilder, string jsonName) where T : class

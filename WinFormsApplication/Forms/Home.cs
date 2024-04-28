@@ -8,8 +8,6 @@ namespace WinFormsApplication.Forms
         public Home()
         {
             InitializeComponent();
-
-            servicesContainer.HorizontalScroll.Visible = false;
         }
 
         private void servicesPage_Enter(object sender, EventArgs e)
@@ -34,14 +32,19 @@ namespace WinFormsApplication.Forms
 
         private void RecalculateServicesWidth()
         {
-            foreach (ServiceView control in servicesContainer.Controls)
-            {
-                control.Size = new()
-                {
-                    Width = servicesContainer.Size.Width - servicesContainer.Padding.Left - servicesContainer.Padding.Right - 20,
-                    Height = control.Size.Height
-                };
-            }
+            //foreach (ServiceView control in servicesContainer.Controls)
+            //{
+            //    control.Size = new()
+            //    {
+            //        Width = servicesContainer.Size.Width - servicesContainer.Padding.Left - servicesContainer.Padding.Right - 20,
+            //        Height = control.Size.Height
+            //    };
+            //}
+        }
+
+        private void Home_Resize(object sender, EventArgs e)
+        {
+            RecalculateServicesWidth();
         }
     }
 }

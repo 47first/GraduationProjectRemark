@@ -42,14 +42,14 @@
             // 
             // titleLabel
             // 
-            titleLabel.BackColor = Color.RoyalBlue;
+            titleLabel.BackColor = Color.Transparent;
             titleLabel.Dock = DockStyle.Top;
             titleLabel.Font = new Font("Segoe UI Semibold", 16F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            titleLabel.ForeColor = SystemColors.Control;
+            titleLabel.ForeColor = SystemColors.InactiveCaptionText;
             titleLabel.Location = new Point(5, 5);
             titleLabel.Margin = new Padding(10, 0, 10, 0);
             titleLabel.Name = "titleLabel";
-            titleLabel.Size = new Size(413, 35);
+            titleLabel.Size = new Size(1042, 35);
             titleLabel.TabIndex = 0;
             titleLabel.Text = "Название название название название название название название название  название название название название название название название название название название название название название название";
             titleLabel.TextAlign = ContentAlignment.MiddleLeft;
@@ -69,7 +69,7 @@
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.Controls.Add(descriptionLabel);
-            splitContainer1.Size = new Size(413, 138);
+            splitContainer1.Size = new Size(1042, 138);
             splitContainer1.SplitterDistance = 130;
             splitContainer1.TabIndex = 1;
             // 
@@ -90,9 +90,10 @@
             // 
             descriptionLabel.Dock = DockStyle.Fill;
             descriptionLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            descriptionLabel.ForeColor = SystemColors.InactiveCaptionText;
             descriptionLabel.Location = new Point(0, 0);
             descriptionLabel.Name = "descriptionLabel";
-            descriptionLabel.Size = new Size(279, 138);
+            descriptionLabel.Size = new Size(908, 138);
             descriptionLabel.TabIndex = 0;
             descriptionLabel.Text = resources.GetString("descriptionLabel.Text");
             // 
@@ -100,6 +101,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
             BackColor = Color.White;
             BackgroundImageLayout = ImageLayout.Zoom;
             Controls.Add(splitContainer1);
@@ -107,7 +109,7 @@
             MinimumSize = new Size(420, 180);
             Name = "ServiceView";
             Padding = new Padding(5);
-            Size = new Size(423, 183);
+            Size = new Size(1052, 183);
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
