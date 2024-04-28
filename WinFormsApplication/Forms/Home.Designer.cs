@@ -31,10 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             pagesControl = new TabControl();
             servicesPage = new TabPage();
-            servicesSplitContatiner = new SplitContainer();
-            label2 = new Label();
-            label1 = new Label();
-            servicesContainer = new FlowLayoutPanel();
+            servicesPage1 = new Pages.ServicesPage();
             requestsPage = new TabPage();
             coworkingZones = new TabPage();
             usersPage = new TabPage();
@@ -44,10 +41,6 @@
             panel1 = new Panel();
             pagesControl.SuspendLayout();
             servicesPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)servicesSplitContatiner).BeginInit();
-            servicesSplitContatiner.Panel1.SuspendLayout();
-            servicesSplitContatiner.Panel2.SuspendLayout();
-            servicesSplitContatiner.SuspendLayout();
             header.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -59,10 +52,11 @@
             pagesControl.Controls.Add(coworkingZones);
             pagesControl.Controls.Add(usersPage);
             pagesControl.Dock = DockStyle.Fill;
-            pagesControl.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            pagesControl.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
             pagesControl.ItemSize = new Size(48, 25);
             pagesControl.Location = new Point(0, 0);
             pagesControl.Name = "pagesControl";
+            pagesControl.Padding = new Point(10, 3);
             pagesControl.SelectedIndex = 0;
             pagesControl.Size = new Size(800, 415);
             pagesControl.TabIndex = 0;
@@ -70,74 +64,24 @@
             // servicesPage
             // 
             servicesPage.BackColor = SystemColors.Window;
-            servicesPage.Controls.Add(servicesSplitContatiner);
-            servicesPage.Font = new Font("Calibri", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            servicesPage.Controls.Add(servicesPage1);
+            servicesPage.Font = new Font("Segoe UI", 6F, FontStyle.Regular, GraphicsUnit.Point, 204);
             servicesPage.Location = new Point(4, 29);
             servicesPage.Name = "servicesPage";
             servicesPage.Padding = new Padding(3);
             servicesPage.Size = new Size(792, 382);
             servicesPage.TabIndex = 0;
             servicesPage.Text = "Услуги";
+            servicesPage.UseVisualStyleBackColor = true;
             servicesPage.Enter += servicesPage_Enter;
             // 
-            // servicesSplitContatiner
+            // servicesPage1
             // 
-            servicesSplitContatiner.Dock = DockStyle.Fill;
-            servicesSplitContatiner.FixedPanel = FixedPanel.Panel1;
-            servicesSplitContatiner.IsSplitterFixed = true;
-            servicesSplitContatiner.Location = new Point(3, 3);
-            servicesSplitContatiner.Name = "servicesSplitContatiner";
-            servicesSplitContatiner.Orientation = Orientation.Horizontal;
-            // 
-            // servicesSplitContatiner.Panel1
-            // 
-            servicesSplitContatiner.Panel1.BackColor = Color.RoyalBlue;
-            servicesSplitContatiner.Panel1.Controls.Add(label2);
-            servicesSplitContatiner.Panel1.Controls.Add(label1);
-            // 
-            // servicesSplitContatiner.Panel2
-            // 
-            servicesSplitContatiner.Panel2.Controls.Add(servicesContainer);
-            servicesSplitContatiner.Size = new Size(786, 376);
-            servicesSplitContatiner.SplitterDistance = 55;
-            servicesSplitContatiner.TabIndex = 2;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Calibri", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label2.ForeColor = SystemColors.ButtonHighlight;
-            label2.Location = new Point(100, 23);
-            label2.Name = "label2";
-            label2.Size = new Size(226, 15);
-            label2.TabIndex = 1;
-            label2.Text = "Здесь вы можете забронировать место";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label1.ForeColor = SystemColors.ButtonHighlight;
-            label1.Location = new Point(13, 11);
-            label1.Name = "label1";
-            label1.Size = new Size(81, 30);
-            label1.TabIndex = 0;
-            label1.Text = "Услуги";
-            // 
-            // servicesContainer
-            // 
-            servicesContainer.AutoScroll = true;
-            servicesContainer.Dock = DockStyle.Fill;
-            servicesContainer.FlowDirection = FlowDirection.TopDown;
-            servicesContainer.Location = new Point(0, 0);
-            servicesContainer.Margin = new Padding(0);
-            servicesContainer.Name = "servicesContainer";
-            servicesContainer.Padding = new Padding(10, 0, 10, 10);
-            servicesContainer.Size = new Size(786, 317);
-            servicesContainer.TabIndex = 0;
-            servicesContainer.WrapContents = false;
-            servicesContainer.SizeChanged += servicesContainer_SizeChanged;
+            servicesPage1.Dock = DockStyle.Fill;
+            servicesPage1.Location = new Point(3, 3);
+            servicesPage1.Name = "servicesPage1";
+            servicesPage1.Size = new Size(786, 376);
+            servicesPage1.TabIndex = 0;
             // 
             // requestsPage
             // 
@@ -182,9 +126,9 @@
             // 
             // quitButton
             // 
-            quitButton.BackColor = Color.CornflowerBlue;
+            quitButton.BackColor = Color.Transparent;
             quitButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            quitButton.ForeColor = SystemColors.Info;
+            quitButton.ForeColor = SystemColors.InactiveCaptionText;
             quitButton.Image = Properties.Images.quit;
             quitButton.ImageTransparentColor = Color.Magenta;
             quitButton.Margin = new Padding(0);
@@ -230,11 +174,6 @@
             Resize += Home_Resize;
             pagesControl.ResumeLayout(false);
             servicesPage.ResumeLayout(false);
-            servicesSplitContatiner.Panel1.ResumeLayout(false);
-            servicesSplitContatiner.Panel1.PerformLayout();
-            servicesSplitContatiner.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)servicesSplitContatiner).EndInit();
-            servicesSplitContatiner.ResumeLayout(false);
             header.ResumeLayout(false);
             header.PerformLayout();
             panel1.ResumeLayout(false);
@@ -252,9 +191,6 @@
         private ToolStripLabel welcomeLabel;
         private TabPage coworkingZones;
         private TabPage usersPage;
-        private Label label1;
-        private Label label2;
-        private SplitContainer servicesSplitContatiner;
-        private FlowLayoutPanel servicesContainer;
+        private Pages.ServicesPage servicesPage1;
     }
 }
