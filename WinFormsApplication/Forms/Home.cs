@@ -1,4 +1,5 @@
-﻿using WinFormsApplication.Components;
+﻿using Database;
+using WinFormsApplication.Components;
 
 namespace WinFormsApplication.Forms
 {
@@ -7,30 +8,37 @@ namespace WinFormsApplication.Forms
         public Home()
         {
             InitializeComponent();
+
+            servicesContainer.HorizontalScroll.Visible = false;
         }
 
         private void servicesPage_Enter(object sender, EventArgs e)
         {
+            using (var dbContext = new DatabaseContext())
+            {
+                foreach (var service in dbContext.Services)
+                {
+                    var serviceView = new ServiceView(service.Name, service.Description);
 
-        }
+                    servicesContainer.Controls.Add(serviceView);
+                }
 
-        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
+                RecalculateServicesWidth();
+            }
         }
 
         private void servicesContainer_SizeChanged(object sender, EventArgs e)
         {
-            if (sender is not FlowLayoutPanel flowLayoutPanel)
-            {
-                return;
-            }
+            RecalculateServicesWidth();
+        }
 
-            foreach (ServiceView control in flowLayoutPanel.Controls)
+        private void RecalculateServicesWidth()
+        {
+            foreach (ServiceView control in servicesContainer.Controls)
             {
                 control.Size = new()
                 {
-                    Width = flowLayoutPanel.Size.Width,
+                    Width = servicesContainer.Size.Width - servicesContainer.Padding.Left - servicesContainer.Padding.Right - 20,
                     Height = control.Size.Height
                 };
             }

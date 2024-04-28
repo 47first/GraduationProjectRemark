@@ -48,7 +48,6 @@
             servicesSplitContatiner.Panel1.SuspendLayout();
             servicesSplitContatiner.Panel2.SuspendLayout();
             servicesSplitContatiner.SuspendLayout();
-            servicesContainer.SuspendLayout();
             header.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -60,7 +59,8 @@
             pagesControl.Controls.Add(coworkingZones);
             pagesControl.Controls.Add(usersPage);
             pagesControl.Dock = DockStyle.Fill;
-            pagesControl.Font = new Font("Segoe UI", 8.5F);
+            pagesControl.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            pagesControl.ItemSize = new Size(48, 25);
             pagesControl.Location = new Point(0, 0);
             pagesControl.Name = "pagesControl";
             pagesControl.SelectedIndex = 0;
@@ -72,10 +72,10 @@
             servicesPage.BackColor = SystemColors.GradientActiveCaption;
             servicesPage.Controls.Add(servicesSplitContatiner);
             servicesPage.Font = new Font("Calibri", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            servicesPage.Location = new Point(4, 22);
+            servicesPage.Location = new Point(4, 29);
             servicesPage.Name = "servicesPage";
             servicesPage.Padding = new Padding(3);
-            servicesPage.Size = new Size(792, 389);
+            servicesPage.Size = new Size(792, 382);
             servicesPage.TabIndex = 0;
             servicesPage.Text = "Услуги";
             servicesPage.Enter += servicesPage_Enter;
@@ -98,7 +98,7 @@
             // servicesSplitContatiner.Panel2
             // 
             servicesSplitContatiner.Panel2.Controls.Add(servicesContainer);
-            servicesSplitContatiner.Size = new Size(786, 383);
+            servicesSplitContatiner.Size = new Size(786, 376);
             servicesSplitContatiner.SplitterDistance = 55;
             servicesSplitContatiner.TabIndex = 2;
             // 
@@ -129,40 +129,41 @@
             // 
             servicesContainer.AutoScroll = true;
             servicesContainer.Dock = DockStyle.Fill;
+            servicesContainer.FlowDirection = FlowDirection.TopDown;
             servicesContainer.Location = new Point(0, 0);
             servicesContainer.Margin = new Padding(0);
             servicesContainer.Name = "servicesContainer";
             servicesContainer.Padding = new Padding(10, 0, 10, 10);
-            servicesContainer.Size = new Size(786, 324);
+            servicesContainer.Size = new Size(786, 317);
             servicesContainer.TabIndex = 0;
+            servicesContainer.WrapContents = false;
             servicesContainer.SizeChanged += servicesContainer_SizeChanged;
-
             // 
             // requestsPage
             // 
             requestsPage.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            requestsPage.Location = new Point(4, 22);
+            requestsPage.Location = new Point(4, 29);
             requestsPage.Name = "requestsPage";
             requestsPage.Padding = new Padding(3);
-            requestsPage.Size = new Size(792, 389);
+            requestsPage.Size = new Size(792, 382);
             requestsPage.TabIndex = 1;
             requestsPage.Text = "Запросы";
             requestsPage.UseVisualStyleBackColor = true;
             // 
             // coworkingZones
             // 
-            coworkingZones.Location = new Point(4, 22);
+            coworkingZones.Location = new Point(4, 29);
             coworkingZones.Name = "coworkingZones";
-            coworkingZones.Size = new Size(792, 389);
+            coworkingZones.Size = new Size(792, 382);
             coworkingZones.TabIndex = 2;
             coworkingZones.Text = "Коворкинг зоны";
             coworkingZones.UseVisualStyleBackColor = true;
             // 
             // usersPage
             // 
-            usersPage.Location = new Point(4, 22);
+            usersPage.Location = new Point(4, 29);
             usersPage.Name = "usersPage";
-            usersPage.Size = new Size(792, 389);
+            usersPage.Size = new Size(792, 382);
             usersPage.TabIndex = 3;
             usersPage.Text = "Пользователи";
             usersPage.UseVisualStyleBackColor = true;
@@ -178,7 +179,6 @@
             header.Size = new Size(800, 35);
             header.TabIndex = 1;
             header.Text = "toolStrip1";
-            header.ItemClicked += toolStrip1_ItemClicked;
             // 
             // quitButton
             // 
@@ -187,9 +187,10 @@
             quitButton.ForeColor = SystemColors.Info;
             quitButton.Image = Properties.Images.quit;
             quitButton.ImageTransparentColor = Color.Magenta;
+            quitButton.Margin = new Padding(0);
             quitButton.Name = "quitButton";
             quitButton.Padding = new Padding(5, 0, 5, 0);
-            quitButton.Size = new Size(76, 32);
+            quitButton.Size = new Size(76, 35);
             quitButton.Text = "Выйти";
             // 
             // welcomeLabel
@@ -232,8 +233,6 @@
             servicesSplitContatiner.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)servicesSplitContatiner).EndInit();
             servicesSplitContatiner.ResumeLayout(false);
-            servicesContainer.ResumeLayout(false);
-            servicesContainer.PerformLayout();
             header.ResumeLayout(false);
             header.PerformLayout();
             panel1.ResumeLayout(false);

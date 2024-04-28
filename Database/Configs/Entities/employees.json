@@ -1,32 +1,17 @@
 [
   {
     "Id": 1,
-    "FirstName": "Николай",
-    "MiddleName": "Николаевич",
-    "LastName": "Николаев",
-    "Phone": "89993338844",
-    "Login": "nikola_la",
-    "Password": "password123",
+    "UserId": 1,
     "PositionId": 1
   },
   {
     "Id": 2,
-    "FirstName": "Александр",
-    "MiddleName": "Александрович",
-    "LastName": "Александрин",
-    "Phone": "89993338844",
-    "Login": "alex_al",
-    "Password": "password123",
+    "UserId": 2,
     "PositionId": 1
   },
   {
     "Id": 3,
-    "FirstName": "Артем",
-    "MiddleName": "Артемович",
-    "LastName": "Артемов",
-    "Phone": "89993338844",
-    "Login": "artem_ar",
-    "Password": "password123",
+    "UserId": 3,
     "PositionId": 1
   }
 ]
