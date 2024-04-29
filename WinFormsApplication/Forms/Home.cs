@@ -12,6 +12,10 @@ namespace WinFormsApplication.Forms
             {
                 OpenAuthorizaitonForm();
             }
+            else
+            {
+                pagesControl.Enabled = true;
+            }
         }
 
         private void servicesPage_Enter(object sender, EventArgs e)
@@ -28,6 +32,7 @@ namespace WinFormsApplication.Forms
 
         private void OpenAuthorizaitonForm()
         {
+            pagesControl.Enabled = false;
             ShowInTaskbar = false;
             Opacity = 0;
 
@@ -48,6 +53,7 @@ namespace WinFormsApplication.Forms
 
             ShowInTaskbar = true;
             Opacity = 1;
+            pagesControl.Enabled = true;
 
             Focus();
         }

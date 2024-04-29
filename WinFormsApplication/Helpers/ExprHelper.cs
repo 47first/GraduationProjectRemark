@@ -7,25 +7,29 @@ namespace WinFormsApplication.Helpers
         private static Regex _phoneRegex = new Regex("^[\\+]?[(]?[0-9]{3}[)]?[-\\s\\.]?[0-9]{3}[-\\s\\.]?[0-9]{4,6}$", RegexOptions.Compiled);
         private static Regex _emailRegex = new Regex("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", RegexOptions.Compiled);
 
-        public static Func<bool> StringLength(TextBox input, int minLength, int maxLength)
+        public static Func<bool> StringLength(Func<string> getter, int minLength, int maxLength)
         {
-            return () => input.Text.Length > minLength && input.Text.Length < maxLength;
+            return () => string.IsNullOrEmpty(getter()) == false && getter().Length > minLength && getter().Length < maxLength;
         }
 
-        public static Func<bool> NullableStringLength(TextBox input, int maxLength)
+        public static Func<bool> NullableStringLength(Func<string> getter, int maxLength)
         {
-            return () => string.IsNullOrEmpty(input.Text) || input.Text.Length < maxLength;
+            return () => string.IsNullOrEmpty(getter()) || getter().Length < maxLength;
         }
 
-        public static Func<bool> PhoneExpr(TextBox phoneInput)
+        public static Func<bool> PhoneExpr(Func<string> getter)
         {
-            return () => _phoneRegex.IsMatch(phoneInput.Text);
+            return () => _phoneRegex.IsMatch(getter());
         }
 
-        public static Func<bool> EmailExpr(TextBox emailInput)
+        public static Func<bool> EmailExpr(Func<string> getter)
         {
-            return () => _emailRegex.IsMatch(emailInput.Text);
+            return () => _emailRegex.IsMatch(getter());
         }
 
+        public static Func<bool> NumberExpr(Func<string> getter, int min, int max)
+        {
+            return () => int.TryParse(getter(), out int value) && value >= min && value <= max;
+        }
     }
 }

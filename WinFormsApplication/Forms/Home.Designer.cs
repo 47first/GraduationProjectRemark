@@ -52,6 +52,7 @@
             pagesControl.Controls.Add(coworkingZones);
             pagesControl.Controls.Add(usersPage);
             pagesControl.Dock = DockStyle.Fill;
+            pagesControl.Enabled = false;
             pagesControl.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
             pagesControl.ItemSize = new Size(48, 25);
             pagesControl.Location = new Point(0, 0);

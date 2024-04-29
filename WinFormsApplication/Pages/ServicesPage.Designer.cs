@@ -31,6 +31,7 @@ namespace WinFormsApplication.Pages
         {
             splitContainer = new SplitContainer();
             label2 = new Label();
+            createButton = new Button();
             label1 = new Label();
             servicesContainer = new FlowLayoutPanel();
             notFoundLabel = new Label();
@@ -54,6 +55,7 @@ namespace WinFormsApplication.Pages
             // 
             splitContainer.Panel1.BackColor = Color.RoyalBlue;
             splitContainer.Panel1.Controls.Add(label2);
+            splitContainer.Panel1.Controls.Add(createButton);
             splitContainer.Panel1.Controls.Add(label1);
             // 
             // splitContainer.Panel2
@@ -73,6 +75,18 @@ namespace WinFormsApplication.Pages
             label2.Size = new Size(226, 15);
             label2.TabIndex = 3;
             label2.Text = "Здесь вы можете забронировать место";
+            // 
+            // createButton
+            // 
+            createButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            createButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            createButton.Location = new Point(710, 7);
+            createButton.Name = "createButton";
+            createButton.Size = new Size(75, 23);
+            createButton.TabIndex = 1;
+            createButton.Text = "Создать";
+            createButton.UseVisualStyleBackColor = true;
+            createButton.Click += createButton_Click;
             // 
             // label1
             // 
@@ -133,5 +147,6 @@ namespace WinFormsApplication.Pages
         private Label label1;
         private FlowLayoutPanel servicesContainer;
         private Label notFoundLabel;
+        private Button createButton;
     }
 }

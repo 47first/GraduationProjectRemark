@@ -24,7 +24,7 @@ namespace Database
 
         public DatabaseContext()
         {
-            Database.EnsureDeleted();
+            //Database.EnsureDeleted();
 
             Database.EnsureCreated();
         }

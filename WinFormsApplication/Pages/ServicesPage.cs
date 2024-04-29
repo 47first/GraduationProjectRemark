@@ -1,5 +1,7 @@
 ﻿using Database;
 using WinFormsApplication.Components;
+using WinFormsApplication.Forms;
+using WinFormsApplication.Services.Impl;
 
 namespace WinFormsApplication.Pages
 {
@@ -15,13 +17,24 @@ namespace WinFormsApplication.Pages
 
         public void EnterPage()
         {
+            var isAdmin = UserContext.Instance.CurrentUser?.RoleId == 3;
+
             using (var dbContext = new DatabaseContext())
             {
                 servicesContainer.Controls.Clear();
 
+                var categories = dbContext.Categories.ToArray();
+
                 foreach (var service in dbContext.Services)
                 {
-                    var serviceView = new ServiceView(service.Name, service.Description);
+                    var category = categories.First(x => x.Id == service.CategoryId);
+
+                    var serviceView = new ServiceView(
+                        ImageService.Instance.GetImage(service.ImagePath),
+                        service.Name,
+                        service.Description,
+                        category.Name,
+                        isAdmin);
 
                     servicesContainer.Controls.Add(serviceView);
                 }
@@ -37,6 +50,15 @@ namespace WinFormsApplication.Pages
                     notFoundLabel.Visible = false;
                 }
             }
+        }
+
+        private void createButton_Click(object sender, EventArgs e)
+        {
+            var serviceForm = new ServiceSetForm();
+
+            serviceForm.Show();
+
+            serviceForm.ServicesUpdate += EnterPage;
         }
     }
 }

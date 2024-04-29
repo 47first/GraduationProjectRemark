@@ -39,6 +39,10 @@
 	</ItemGroup>
 	
 	<ItemGroup>
+	  <None Remove="Images\default.png" />
+	</ItemGroup>
+	
+	<ItemGroup>
 	  <ProjectReference Include="..\Database\Database.csproj" />
 	</ItemGroup>
 	

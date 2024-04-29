@@ -2,20 +2,18 @@
 {
     public class ValidationForm
     {
-        private Dictionary<TextBox, Label> _bindings = new();
-
         private List<InputBinding> _inputBindings = new();
 
-        public void MakeBinding(TextBox textBox, Label label, Func<bool> predicate)
+        public void MakeBinding(Control control, Label label, Func<bool> predicate)
         {
             _inputBindings.Add(new()
             {
-                TextBox = textBox,
+                Control = control,
                 Label = label,
                 Expr = predicate,
             });
 
-            textBox.TextChanged += (s, e) => RemoveMark(textBox, label);
+            control.TextChanged += (s, e) => RemoveMark(control, label);
         }
 
         public bool Verify(out string message)
@@ -24,7 +22,7 @@
 
             foreach (var binding in _inputBindings)
             {
-                if (VerifyInput(binding.Expr, binding.TextBox, binding.Label) == false)
+                if (VerifyInput(binding.Expr, binding.Control, binding.Label) == false)
                 {
                     isValid = false;
                 }
@@ -35,46 +33,46 @@
             return isValid;
         }
 
-        private bool VerifyInput(Func<bool> predicate, TextBox textBox, Label label)
+        private bool VerifyInput(Func<bool> predicate, Control control, Label label)
         {
             var isValid = predicate();
 
             if (isValid)
             {
-                MarkAsValid(textBox, label);
+                MarkAsValid(control, label);
             }
             else
             {
-                MarkAsInvalid(textBox, label);
+                MarkAsInvalid(control, label);
             }
 
             return isValid;
         }
 
-        private void MarkAsInvalid(TextBox textBox, Label label)
+        private void MarkAsInvalid(Control control, Label label)
         {
-            textBox.ForeColor = Color.OrangeRed;
+            control.ForeColor = Color.OrangeRed;
 
             label.ForeColor = Color.OrangeRed;
         }
 
-        private void MarkAsValid(TextBox textBox, Label label)
+        private void MarkAsValid(Control control, Label label)
         {
-            textBox.ForeColor = Color.Green;
+            control.ForeColor = Color.Green;
 
             label.ForeColor = Color.Green;
         }
 
-        private void RemoveMark(TextBox textBox, Label label)
+        private void RemoveMark(Control control, Label label)
         {
-            textBox.ForeColor = Color.Black;
+            control.ForeColor = Color.Black;
 
             label.ForeColor = Color.Black;
         }
 
         public class InputBinding
         {
-            public TextBox TextBox { get; set; }
+            public Control Control { get; set; }
 
             public Label Label { get; set; }
 
