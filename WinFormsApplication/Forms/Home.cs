@@ -20,7 +20,7 @@ namespace WinFormsApplication.Forms
 
         private void servicesPage_Enter(object sender, EventArgs e)
         {
-            servicesPage1.EnterPage();
+            servicesPage1.UpdateData();
         }
 
         private void quitButton_Click(object sender, EventArgs e)

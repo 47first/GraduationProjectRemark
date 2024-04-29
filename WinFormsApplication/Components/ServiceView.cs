@@ -1,14 +1,25 @@
-﻿namespace WinFormsApplication.Components
+﻿using Database;
+
+namespace WinFormsApplication.Components
 {
     public partial class ServiceView : UserControl
     {
+        private int _id;
+
+        public event Action ServiceUpdated = delegate { };
+
         public ServiceView(
-            Image image,
+            int id,
             string title,
             string description,
             string category,
-            bool isAdmin)
+            Image image,
+            bool requestButtonVisible,
+            bool deleteButtonVisible,
+            bool updateButtonVisible)
         {
+            _id = id;
+
             InitializeComponent();
 
             pictureBox1.Image = image;
@@ -17,13 +28,22 @@
             descriptionLabel.Text = description;
             categoryLabel.Text = string.Format(categoryLabel.Text, category);
 
-            deleteButton.Visible = isAdmin;
-            updateButton.Visible = isAdmin;
+            requestButton.Visible = requestButtonVisible;
+            deleteButton.Visible = deleteButtonVisible;
+            updateButton.Visible = updateButtonVisible;
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
+            using var dbContext = new DatabaseContext();
 
+            var currentService = dbContext.Services.First(x => x.Id == _id);
+
+            dbContext.Services.Remove(currentService);
+
+            dbContext.SaveChanges();
+
+            ServiceUpdated();
         }
     }
 }

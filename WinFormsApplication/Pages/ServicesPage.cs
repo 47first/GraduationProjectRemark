@@ -15,7 +15,7 @@ namespace WinFormsApplication.Pages
             notFoundLabel.Visible = false;
         }
 
-        public void EnterPage()
+        public void UpdateData()
         {
             var isAdmin = UserContext.Instance.CurrentUser?.RoleId == 3;
 
@@ -30,11 +30,16 @@ namespace WinFormsApplication.Pages
                     var category = categories.First(x => x.Id == service.CategoryId);
 
                     var serviceView = new ServiceView(
-                        ImageService.Instance.GetImage(service.ImagePath),
+                        service.Id,
                         service.Name,
                         service.Description,
                         category.Name,
+                        ImageService.Instance.GetImage(service.ImagePath),
+                        true,
+                        isAdmin,
                         isAdmin);
+
+                    serviceView.ServiceUpdated += () => UpdateData();
 
                     servicesContainer.Controls.Add(serviceView);
                 }
@@ -58,7 +63,7 @@ namespace WinFormsApplication.Pages
 
             serviceForm.Show();
 
-            serviceForm.ServicesUpdate += EnterPage;
+            serviceForm.ServicesUpdate += UpdateData;
         }
     }
 }
