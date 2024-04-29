@@ -19,7 +19,7 @@ namespace WinFormsApplication.Services.Impl
                 {
                     var data = JsonSerializer.Deserialize<AuthorizeData>(File.ReadAllText(_dataPath));
 
-                    SingIn(data.Login, data.Password);
+                    SignIn(data.Login, data.Password);
 
                     return;
                 }
@@ -45,9 +45,9 @@ namespace WinFormsApplication.Services.Impl
             }
         }
 
-        public void SingIn(string login, string password)
+        public void SignIn(string login, string password, DatabaseContext context = null)
         {
-            using var dbContext = new DatabaseContext();
+            var dbContext = context ?? new DatabaseContext();
 
             var user = dbContext.Users.FirstOrDefault(x => x.Password == password && x.Login == login);
 
@@ -81,8 +81,12 @@ namespace WinFormsApplication.Services.Impl
             };
             var serializedData = JsonSerializer.Serialize(data);
 
-            
             File.WriteAllText(_dataPath, serializedData);
+
+            if (context is null)
+            {
+                dbContext.Dispose();
+            }
         }
 
         private class AuthorizeData
