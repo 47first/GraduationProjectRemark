@@ -6,6 +6,7 @@ namespace WinFormsApplication.Services.Impl
         private const string IMAGES_RELATIVE_DIRECTORY = "Images";
         private const string DEFAULT_IMAGE_NAME = "default.png";
         private static IImageService _instance;
+        private Dictionary<string, Image> _imageCache = new();
         private Image _defaultImage;
 
         private ImageService()
@@ -21,9 +22,16 @@ namespace WinFormsApplication.Services.Impl
         {
             var imagePath = GetImagePath(fileName);
 
+            if (_imageCache.ContainsKey(imagePath))
+            {
+                return _imageCache[imagePath];
+            }
+
             if (File.Exists(imagePath))
             {
-                return Image.FromFile(imagePath);
+                var image = Image.FromFile(imagePath);
+
+                _imageCache.Add(imagePath, image);
             }
 
             return _defaultImage;

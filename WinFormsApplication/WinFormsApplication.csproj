@@ -40,6 +40,7 @@
 	
 	<ItemGroup>
 	  <None Remove="Images\default.png" />
+	  <None Remove="Images\One_Piece,_Volume_61_Cover_%28Japanese%29.jpg" />
 	</ItemGroup>
 	
 	<ItemGroup>
