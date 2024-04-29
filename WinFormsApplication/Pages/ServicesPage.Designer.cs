@@ -91,14 +91,12 @@ namespace WinFormsApplication.Pages
             servicesContainer.AutoScroll = true;
             servicesContainer.Controls.Add(notFoundLabel);
             servicesContainer.Dock = DockStyle.Fill;
-            servicesContainer.FlowDirection = FlowDirection.TopDown;
             servicesContainer.Location = new Point(0, 0);
             servicesContainer.Margin = new Padding(0);
             servicesContainer.Name = "servicesContainer";
             servicesContainer.Padding = new Padding(10, 0, 10, 10);
             servicesContainer.Size = new Size(788, 490);
             servicesContainer.TabIndex = 1;
-            servicesContainer.WrapContents = false;
             // 
             // notFoundLabel
             // 

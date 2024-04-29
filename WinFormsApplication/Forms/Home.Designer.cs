@@ -136,6 +136,7 @@
             quitButton.Padding = new Padding(5, 0, 5, 0);
             quitButton.Size = new Size(76, 35);
             quitButton.Text = "Выйти";
+            quitButton.Click += quitButton_Click;
             // 
             // welcomeLabel
             // 

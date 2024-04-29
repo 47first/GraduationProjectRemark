@@ -35,6 +35,7 @@
             passwordTextBox = new TextBox();
             loginButton = new Button();
             registrationButton = new Button();
+            errorLabel = new Label();
             SuspendLayout();
             // 
             // titleLabel
@@ -68,6 +69,7 @@
             loginTextBox.PlaceholderText = "Введите логин";
             loginTextBox.Size = new Size(220, 22);
             loginTextBox.TabIndex = 2;
+            loginTextBox.TextChanged += loginTextBox_TextChanged;
             // 
             // passwordLabel
             // 
@@ -88,30 +90,48 @@
             passwordTextBox.PlaceholderText = "Введите пароль";
             passwordTextBox.Size = new Size(220, 22);
             passwordTextBox.TabIndex = 4;
+            passwordTextBox.TextChanged += passwordTextBox_TextChanged;
             // 
             // loginButton
             // 
-            loginButton.Location = new Point(157, 186);
+            loginButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            loginButton.Location = new Point(157, 201);
             loginButton.Name = "loginButton";
             loginButton.Size = new Size(75, 23);
             loginButton.TabIndex = 5;
             loginButton.Text = "Войти";
             loginButton.UseVisualStyleBackColor = true;
+            loginButton.Click += loginButton_Click;
             // 
             // registrationButton
             // 
-            registrationButton.Location = new Point(12, 186);
+            registrationButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            registrationButton.Location = new Point(12, 201);
             registrationButton.Name = "registrationButton";
             registrationButton.Size = new Size(139, 23);
             registrationButton.TabIndex = 6;
             registrationButton.Text = "Зарегистрироваться";
             registrationButton.UseVisualStyleBackColor = true;
+            registrationButton.Click += registrationButton_Click;
+            // 
+            // errorLabel
+            // 
+            errorLabel.ForeColor = Color.OrangeRed;
+            errorLabel.Location = new Point(12, 145);
+            errorLabel.MaximumSize = new Size(220, 53);
+            errorLabel.MinimumSize = new Size(220, 53);
+            errorLabel.Name = "errorLabel";
+            errorLabel.Size = new Size(220, 53);
+            errorLabel.TabIndex = 7;
+            errorLabel.Text = "Неправильный логин или пароль\r\nВведите саобольный промокод\r\nМегамаркета начинаем\r\n";
+            errorLabel.Visible = false;
             // 
             // AuthorizationForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(244, 221);
+            ClientSize = new Size(244, 236);
+            Controls.Add(errorLabel);
             Controls.Add(registrationButton);
             Controls.Add(loginButton);
             Controls.Add(passwordTextBox);
@@ -135,5 +155,6 @@
         private TextBox passwordTextBox;
         private Button loginButton;
         private Button registrationButton;
+        private Label errorLabel;
     }
 }
