@@ -32,6 +32,7 @@
             titleLabel = new Label();
             splitContainer1 = new SplitContainer();
             pictureBox1 = new PictureBox();
+            categoryLabel = new Label();
             descriptionLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -68,6 +69,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            splitContainer1.Panel2.Controls.Add(categoryLabel);
             splitContainer1.Panel2.Controls.Add(descriptionLabel);
             splitContainer1.Size = new Size(1042, 138);
             splitContainer1.SplitterDistance = 130;
@@ -85,6 +87,17 @@
             pictureBox1.Size = new Size(130, 138);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
+            // 
+            // categoryLabel
+            // 
+            categoryLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            categoryLabel.AutoSize = true;
+            categoryLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            categoryLabel.Location = new Point(0, 123);
+            categoryLabel.Name = "categoryLabel";
+            categoryLabel.Size = new Size(83, 15);
+            categoryLabel.TabIndex = 1;
+            categoryLabel.Text = "Категория: {0}";
             // 
             // descriptionLabel
             // 
@@ -112,6 +125,7 @@
             Size = new Size(1052, 183);
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel2.ResumeLayout(false);
+            splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -124,5 +138,6 @@
         private SplitContainer splitContainer1;
         private PictureBox pictureBox1;
         private Label descriptionLabel;
+        private Label categoryLabel;
     }
 }
