@@ -11,7 +11,7 @@ namespace WinFormsApplication.Services.Impl
 
         public AuthorizationService()
         {
-            _dataPath = Path.Combine(Environment.CurrentDirectory, "Temp", "lg.ini");
+            _dataPath = Path.Combine(Environment.CurrentDirectory, "lg.ini");
 
             if (File.Exists(_dataPath))
             {
@@ -20,6 +20,8 @@ namespace WinFormsApplication.Services.Impl
                     var data = JsonSerializer.Deserialize<AuthorizeData>(File.ReadAllText(_dataPath));
 
                     SingIn(data.Login, data.Password);
+
+                    return;
                 }
                 catch(AuthorizationException ex)
                 {
@@ -33,12 +35,8 @@ namespace WinFormsApplication.Services.Impl
 
         public bool IsAuthorized { get; private set; }
 
-        public int? UserId { get; private set; }
-
         public void Logout()
         {
-            UserId = null;
-
             IsAuthorized = false;
 
             if (File.Exists(_dataPath))
@@ -53,23 +51,45 @@ namespace WinFormsApplication.Services.Impl
 
             var user = dbContext.Users.FirstOrDefault(x => x.Password == password && x.Login == login);
 
-            if (user is not null)
-            {
-                IsAuthorized = true;
-
-                UserId = user.Id;
-            }
-            else
+            if (user is null)
             {
                 throw new AuthorizationException();
             }
+
+            IsAuthorized = true;
+
+            if (UserContext.Instance is IUserAccessor accessor)
+            {
+                accessor.CurrentUser = user;
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
+
+            if (File.Exists(_dataPath) == false)
+            {
+                var fileStream = File.Create(_dataPath);
+
+                fileStream.Dispose();
+            }
+
+            var data = new AuthorizeData
+            {
+                Login = login,
+                Password = password
+            };
+            var serializedData = JsonSerializer.Serialize(data);
+
+            
+            File.WriteAllText(_dataPath, serializedData);
         }
 
-        private struct AuthorizeData
+        private class AuthorizeData
         {
-            public string Login;
+            public string Login { get; set; }
 
-            public string Password;
+            public string Password { get; set; }
         }
     }
 }
