@@ -7,13 +7,26 @@ namespace WinFormsApplication.Forms
 {
     public partial class ServiceSetForm : Form
     {
+        private int _serviceId;
         private ValidationForm _validationForm;
 
-        public event Action ServicesUpdate = delegate { };
+        public event Action<Service> ValidClick = delegate { };
 
-        public ServiceSetForm()
+        public ServiceSetForm(string title, string submit, Service service = null)
         {
             InitializeComponent();
+
+            if (service is not null)
+            {
+                _serviceId = service.Id;
+                nameTextBox.Text = service.Name;
+                descriptionTextBox.Text = service.Description;
+                amountTextBox.Text = service.Amount.ToString();
+            }
+
+            Text = title;
+            titleLabel.Text = title;
+            submitButton.Text = submit;
 
             using var dbContext = new DatabaseContext();
 
@@ -25,12 +38,25 @@ namespace WinFormsApplication.Forms
                     Name = category.Name,
                 };
 
-                categoryComboBox.Items.Add(categoryItem);
+                var createdIndex = categoryComboBox.Items.Add(categoryItem);
+
+                if (service is not null && category.Id == service.CategoryId)
+                {
+                    categoryComboBox.SelectedIndex = createdIndex;
+                }
             }
 
-            var imageNames = ImageService.Instance.GetImagesList();
+            var fileNames = ImageService.Instance.GetImagesList();
 
-            imagesComboBox.Items.AddRange(imageNames.ToArray());
+            foreach (var fileName in fileNames)
+            {
+                var createdIndex = imagesComboBox.Items.Add(fileName);
+
+                if (service is not null && fileName == service.ImagePath)
+                {
+                    imagesComboBox.SelectedIndex = createdIndex;
+                }
+            }
 
             _validationForm = new ValidationForm();
 
@@ -46,10 +72,6 @@ namespace WinFormsApplication.Forms
 
             _validationForm.MakeBinding(categoryComboBox, categoryLabel,
                 () => categoryComboBox.SelectedItem is CategoryItem);
-        }
-
-        private void categoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
         }
 
         private void imagesComboBox_SelectedValueChanged(object sender, EventArgs e)
@@ -69,22 +91,15 @@ namespace WinFormsApplication.Forms
                 return;
             }
 
-            using var dbContext = new DatabaseContext();
-
-            dbContext.Services.Add(new Service()
+            ValidClick(new Service()
             {
+                Id = _serviceId,
                 Name = nameTextBox.Text,
                 Description = descriptionTextBox.Text,
                 Amount = int.Parse(amountTextBox.Text),
                 ImagePath = imagesComboBox.SelectedItem as string,
                 CategoryId = (categoryComboBox.SelectedItem as CategoryItem).Id,
             });
-
-            dbContext.SaveChanges();
-
-            ServicesUpdate();
-
-            Close();
         }
 
         private class CategoryItem

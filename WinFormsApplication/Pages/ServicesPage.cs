@@ -1,4 +1,5 @@
 ﻿using Database;
+using Database.Entities;
 using WinFormsApplication.Components;
 using WinFormsApplication.Forms;
 using WinFormsApplication.Services.Impl;
@@ -59,11 +60,22 @@ namespace WinFormsApplication.Pages
 
         private void createButton_Click(object sender, EventArgs e)
         {
-            var serviceForm = new ServiceSetForm();
+            var setForm = new ServiceSetForm("Создать услугу", "Создать");
 
-            serviceForm.Show();
+            setForm.ValidClick += (service) =>
+            {
+                using var dbContext = new DatabaseContext();
 
-            serviceForm.ServicesUpdate += UpdateData;
+                dbContext.Services.Add(service);
+
+                dbContext.SaveChanges();
+
+                setForm.Close();
+
+                UpdateData();
+            };
+
+            setForm.Show();
         }
     }
 }

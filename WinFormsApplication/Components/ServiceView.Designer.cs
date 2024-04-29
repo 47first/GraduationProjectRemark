@@ -120,6 +120,7 @@
             updateButton.TabIndex = 2;
             updateButton.Text = "Обновить";
             updateButton.UseVisualStyleBackColor = false;
+            updateButton.Click += updateButton_Click;
             // 
             // deleteButton
             // 

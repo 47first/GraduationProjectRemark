@@ -1,4 +1,5 @@
 ﻿using Database;
+using WinFormsApplication.Forms;
 
 namespace WinFormsApplication.Components
 {
@@ -44,6 +45,30 @@ namespace WinFormsApplication.Components
             dbContext.SaveChanges();
 
             ServiceUpdated();
+        }
+
+        private void updateButton_Click(object sender, EventArgs e)
+        {
+            using var dbContext = new DatabaseContext();
+
+            var service = dbContext.Services.FirstOrDefault(x => x.Id == _id);
+
+            var setForm = new ServiceSetForm("Обновить услугу", "Обновить", service);
+
+            setForm.ValidClick += (service) =>
+            {
+                using var dbContext = new DatabaseContext();
+
+                dbContext.Services.Update(service);
+
+                dbContext.SaveChanges();
+
+                setForm.Close();
+
+                ServiceUpdated();
+            };
+
+            setForm.Show();
         }
     }
 }

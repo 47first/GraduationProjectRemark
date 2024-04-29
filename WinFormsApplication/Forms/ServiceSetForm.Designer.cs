@@ -141,7 +141,7 @@
             imagesComboBox.Name = "imagesComboBox";
             imagesComboBox.Size = new Size(622, 23);
             imagesComboBox.TabIndex = 12;
-            imagesComboBox.SelectedValueChanged += imagesComboBox_SelectedValueChanged;
+            imagesComboBox.SelectedIndexChanged += imagesComboBox_SelectedValueChanged;
             // 
             // categoryLabel
             // 
@@ -160,7 +160,6 @@
             categoryComboBox.Name = "categoryComboBox";
             categoryComboBox.Size = new Size(777, 23);
             categoryComboBox.TabIndex = 14;
-            categoryComboBox.SelectedIndexChanged += categoryComboBox_SelectedIndexChanged;
             // 
             // panel1
             // 
