@@ -79,13 +79,16 @@ namespace WinFormsApplication.Pages
             // createButton
             // 
             createButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            createButton.BackColor = SystemColors.ButtonHighlight;
+            createButton.FlatStyle = FlatStyle.Flat;
             createButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            createButton.ForeColor = Color.RoyalBlue;
             createButton.Location = new Point(710, 7);
             createButton.Name = "createButton";
             createButton.Size = new Size(75, 23);
             createButton.TabIndex = 1;
             createButton.Text = "Создать";
-            createButton.UseVisualStyleBackColor = true;
+            createButton.UseVisualStyleBackColor = false;
             createButton.Click += createButton_Click;
             // 
             // label1

@@ -140,6 +140,8 @@
             Controls.Add(loginLabel);
             Controls.Add(titleLabel);
             MaximizeBox = false;
+            MaximumSize = new Size(260, 275);
+            MinimumSize = new Size(260, 275);
             Name = "AuthorizationForm";
             Text = "Авторизация";
             ResumeLayout(false);

@@ -8,6 +8,8 @@ namespace WinFormsApplication.Forms
         {
             InitializeComponent();
 
+            pagesControl.TabPages.Remove(usersPage);
+
             if (AuthorizationService.Instance.IsAuthorized == false)
             {
                 OpenAuthorizaitonForm();
@@ -15,6 +17,11 @@ namespace WinFormsApplication.Forms
             else
             {
                 pagesControl.Enabled = true;
+
+                if (UserContext.Instance.CurrentUser.RoleId == 3)
+                {
+                    pagesControl.TabPages.Add(usersPage);
+                }
             }
         }
 
@@ -26,6 +33,8 @@ namespace WinFormsApplication.Forms
         private void quitButton_Click(object sender, EventArgs e)
         {
             AuthorizationService.Instance.Logout();
+
+            pagesControl.TabPages.Remove(usersPage);
 
             OpenAuthorizaitonForm();
         }
@@ -49,6 +58,11 @@ namespace WinFormsApplication.Forms
                 Close();
 
                 return;
+            }
+
+            if (UserContext.Instance.CurrentUser.RoleId == 3)
+            {
+                pagesControl.TabPages.Add(usersPage);
             }
 
             ShowInTaskbar = true;
