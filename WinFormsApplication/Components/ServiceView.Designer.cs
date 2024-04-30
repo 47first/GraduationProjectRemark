@@ -46,17 +46,17 @@
             // 
             // titleLabel
             // 
-            titleLabel.BackColor = Color.Transparent;
+            titleLabel.BackColor = Color.RoyalBlue;
             titleLabel.Dock = DockStyle.Top;
-            titleLabel.Font = new Font("Segoe UI Semibold", 16F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            titleLabel.ForeColor = SystemColors.InactiveCaptionText;
+            titleLabel.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            titleLabel.ForeColor = SystemColors.ControlLightLight;
             titleLabel.Location = new Point(5, 5);
             titleLabel.Margin = new Padding(10, 0, 10, 0);
             titleLabel.Name = "titleLabel";
             titleLabel.Size = new Size(541, 35);
             titleLabel.TabIndex = 0;
             titleLabel.Text = "Название название название название название название название название  название название название название название название название название название название название название название название";
-            titleLabel.TextAlign = ContentAlignment.MiddleLeft;
+            titleLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // splitContainer1
             // 
@@ -100,10 +100,10 @@
             categoryLabel.AllowDrop = true;
             categoryLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             categoryLabel.AutoSize = true;
-            categoryLabel.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            categoryLabel.Location = new Point(3, 0);
+            categoryLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            categoryLabel.Location = new Point(6, 7);
             categoryLabel.Name = "categoryLabel";
-            categoryLabel.Size = new Size(113, 20);
+            categoryLabel.Size = new Size(97, 17);
             categoryLabel.TabIndex = 1;
             categoryLabel.Text = "Категория: {0}";
             // 
@@ -142,9 +142,9 @@
             descriptionLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             descriptionLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
             descriptionLabel.ForeColor = SystemColors.InactiveCaptionText;
-            descriptionLabel.Location = new Point(5, 13);
+            descriptionLabel.Location = new Point(5, 27);
             descriptionLabel.Name = "descriptionLabel";
-            descriptionLabel.Size = new Size(337, 87);
+            descriptionLabel.Size = new Size(337, 73);
             descriptionLabel.TabIndex = 0;
             descriptionLabel.Text = resources.GetString("descriptionLabel.Text");
             // 

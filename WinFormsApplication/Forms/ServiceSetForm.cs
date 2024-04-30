@@ -28,9 +28,7 @@ namespace WinFormsApplication.Forms
             titleLabel.Text = title;
             submitButton.Text = submit;
 
-            using var dbContext = new DatabaseContext();
-
-            foreach (var category in dbContext.Categories)
+            foreach (var category in DatabaseContext.Instance.Categories)
             {
                 var categoryItem = new CategoryItem()
                 {

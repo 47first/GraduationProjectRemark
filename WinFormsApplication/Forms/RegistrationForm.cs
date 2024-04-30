@@ -46,24 +46,24 @@ namespace WinFormsApplication.Forms
                 return;
             }
 
-            using (var dbContext = new DatabaseContext())
+            DatabaseContext.Instance.Users.Add(new()
             {
-                dbContext.Users.Add(new()
-                {
-                    FirstName = nameTextBox.Text,
-                    MiddleName = middleNameTextBox.Text,
-                    LastName = lastNameTextBox.Text,
-                    Phone = phoneTextBox.Text,
-                    Email = emailTextBox.Text,
-                    Login = loginTextBox.Text,
-                    Password = passwordTextBox.Text,
-                    RoleId = 1
-                });
+                FirstName = nameTextBox.Text,
+                MiddleName = middleNameTextBox.Text,
+                LastName = lastNameTextBox.Text,
+                Phone = phoneTextBox.Text,
+                Email = emailTextBox.Text,
+                Login = loginTextBox.Text,
+                Password = passwordTextBox.Text,
+                RoleId = 1
+            });
 
-                dbContext.SaveChanges();
+            DatabaseContext.Instance.SaveChanges();
 
-                AuthorizationService.Instance.SignIn(loginTextBox.Text, passwordTextBox.Text, dbContext);
-            }
+            AuthorizationService.Instance.SignIn(
+                loginTextBox.Text,
+                passwordTextBox.Text,
+                DatabaseContext.Instance);
 
             Close();
         }

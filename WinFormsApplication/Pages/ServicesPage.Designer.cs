@@ -125,6 +125,7 @@ namespace WinFormsApplication.Pages
             notFoundLabel.Size = new Size(330, 21);
             notFoundLabel.TabIndex = 0;
             notFoundLabel.Text = "Ни одной услуги еще не было добавлено!";
+            notFoundLabel.Visible = false;
             // 
             // ServicesPage
             // 

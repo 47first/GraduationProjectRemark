@@ -1,5 +1,4 @@
 ﻿using Database;
-using Database.Entities;
 using WinFormsApplication.Components;
 using WinFormsApplication.Forms;
 using WinFormsApplication.Services.Impl;
@@ -20,41 +19,38 @@ namespace WinFormsApplication.Pages
         {
             var isAdmin = UserContext.Instance.CurrentUser?.RoleId == 3;
 
-            using (var dbContext = new DatabaseContext())
+            servicesContainer.Controls.Clear();
+
+            var categories = DatabaseContext.Instance.Categories.ToArray();
+
+            foreach (var service in DatabaseContext.Instance.Services)
             {
-                servicesContainer.Controls.Clear();
+                var category = categories.First(x => x.Id == service.CategoryId);
 
-                var categories = dbContext.Categories.ToArray();
+                var serviceView = new ServiceView(
+                    service.Id,
+                    service.Name,
+                    service.Description,
+                    category.Name,
+                    ImageService.Instance.GetImage(service.ImagePath),
+                    true,
+                    isAdmin,
+                    isAdmin);
 
-                foreach (var service in dbContext.Services)
-                {
-                    var category = categories.First(x => x.Id == service.CategoryId);
+                serviceView.ServiceUpdated += () => UpdateData();
 
-                    var serviceView = new ServiceView(
-                        service.Id,
-                        service.Name,
-                        service.Description,
-                        category.Name,
-                        ImageService.Instance.GetImage(service.ImagePath),
-                        true,
-                        isAdmin,
-                        isAdmin);
+                servicesContainer.Controls.Add(serviceView);
+            }
 
-                    serviceView.ServiceUpdated += () => UpdateData();
+            if (servicesContainer.Controls.Count < 1)
+            {
+                notFoundLabel.Visible = true;
 
-                    servicesContainer.Controls.Add(serviceView);
-                }
-
-                if (servicesContainer.Controls.Count < 1)
-                {
-                    notFoundLabel.Visible = true;
-
-                    servicesContainer.Controls.Add(notFoundLabel);
-                }
-                else
-                {
-                    notFoundLabel.Visible = false;
-                }
+                servicesContainer.Controls.Add(notFoundLabel);
+            }
+            else
+            {
+                notFoundLabel.Visible = false;
             }
         }
 
@@ -64,11 +60,9 @@ namespace WinFormsApplication.Pages
 
             setForm.ValidClick += (service) =>
             {
-                using var dbContext = new DatabaseContext();
+                DatabaseContext.Instance.Services.Add(service);
 
-                dbContext.Services.Add(service);
-
-                dbContext.SaveChanges();
+                DatabaseContext.Instance.SaveChanges();
 
                 setForm.Close();
 

@@ -33,14 +33,14 @@
             servicesPage = new TabPage();
             servicesPage1 = new Pages.ServicesPage();
             requestsPage = new TabPage();
-            coworkingZones = new TabPage();
-            usersPage = new TabPage();
             header = new ToolStrip();
             quitButton = new ToolStripButton();
             welcomeLabel = new ToolStripLabel();
             panel1 = new Panel();
+            requestsPage1 = new Pages.RequestsPage();
             pagesControl.SuspendLayout();
             servicesPage.SuspendLayout();
+            requestsPage.SuspendLayout();
             header.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -49,8 +49,6 @@
             // 
             pagesControl.Controls.Add(servicesPage);
             pagesControl.Controls.Add(requestsPage);
-            pagesControl.Controls.Add(coworkingZones);
-            pagesControl.Controls.Add(usersPage);
             pagesControl.Dock = DockStyle.Fill;
             pagesControl.Enabled = false;
             pagesControl.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
@@ -86,6 +84,7 @@
             // 
             // requestsPage
             // 
+            requestsPage.Controls.Add(requestsPage1);
             requestsPage.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
             requestsPage.Location = new Point(4, 29);
             requestsPage.Name = "requestsPage";
@@ -94,24 +93,7 @@
             requestsPage.TabIndex = 1;
             requestsPage.Text = "Запросы";
             requestsPage.UseVisualStyleBackColor = true;
-            // 
-            // coworkingZones
-            // 
-            coworkingZones.Location = new Point(4, 29);
-            coworkingZones.Name = "coworkingZones";
-            coworkingZones.Size = new Size(792, 382);
-            coworkingZones.TabIndex = 2;
-            coworkingZones.Text = "Коворкинг зоны";
-            coworkingZones.UseVisualStyleBackColor = true;
-            // 
-            // usersPage
-            // 
-            usersPage.Location = new Point(4, 29);
-            usersPage.Name = "usersPage";
-            usersPage.Size = new Size(792, 382);
-            usersPage.TabIndex = 3;
-            usersPage.Text = "Пользователи";
-            usersPage.UseVisualStyleBackColor = true;
+            requestsPage.Enter += requestsPage_Enter;
             // 
             // header
             // 
@@ -148,8 +130,8 @@
             welcomeLabel.Margin = new Padding(10, 1, 0, 2);
             welcomeLabel.Name = "welcomeLabel";
             welcomeLabel.RightToLeft = RightToLeft.No;
-            welcomeLabel.Size = new Size(174, 32);
-            welcomeLabel.Text = "Здравствуйте, Алексей!";
+            welcomeLabel.Size = new Size(122, 32);
+            welcomeLabel.Text = "Коворкинг зона";
             // 
             // panel1
             // 
@@ -159,6 +141,14 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(800, 415);
             panel1.TabIndex = 3;
+            // 
+            // requestsPage1
+            // 
+            requestsPage1.Dock = DockStyle.Fill;
+            requestsPage1.Location = new Point(3, 3);
+            requestsPage1.Name = "requestsPage1";
+            requestsPage1.Size = new Size(786, 376);
+            requestsPage1.TabIndex = 0;
             // 
             // Home
             // 
@@ -174,6 +164,7 @@
             Text = "Коворкинг зона";
             pagesControl.ResumeLayout(false);
             servicesPage.ResumeLayout(false);
+            requestsPage.ResumeLayout(false);
             header.ResumeLayout(false);
             header.PerformLayout();
             panel1.ResumeLayout(false);
@@ -189,8 +180,7 @@
         private ToolStripButton quitButton;
         private Panel panel1;
         private ToolStripLabel welcomeLabel;
-        private TabPage coworkingZones;
-        private TabPage usersPage;
         private Pages.ServicesPage servicesPage1;
+        private Pages.RequestsPage requestsPage1;
     }
 }

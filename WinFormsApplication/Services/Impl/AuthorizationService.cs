@@ -47,9 +47,7 @@ namespace WinFormsApplication.Services.Impl
 
         public void SignIn(string login, string password, DatabaseContext context = null)
         {
-            var dbContext = context ?? new DatabaseContext();
-
-            var user = dbContext.Users.FirstOrDefault(x => x.Password == password && x.Login == login);
+            var user = DatabaseContext.Instance.Users.FirstOrDefault(x => x.Password == password && x.Login == login);
 
             if (user is null)
             {
@@ -82,11 +80,6 @@ namespace WinFormsApplication.Services.Impl
             var serializedData = JsonSerializer.Serialize(data);
 
             File.WriteAllText(_dataPath, serializedData);
-
-            if (context is null)
-            {
-                dbContext.Dispose();
-            }
         }
 
         private class AuthorizeData

@@ -6,6 +6,10 @@ namespace Database
 {
     public class DatabaseContext : DbContext
     {
+        private static DatabaseContext _instance;
+
+        public static DatabaseContext Instance => _instance ?? (_instance = new DatabaseContext());
+
         public DbSet<Category> Categories { get; set; } = null!;
 
         public DbSet<CoworkingZone> CoworkingZones { get; set; } = null!;
@@ -22,9 +26,9 @@ namespace Database
 
         public DbSet<User> Users { get; set; } = null!;
 
-        public DatabaseContext()
+        private DatabaseContext()
         {
-            //Database.EnsureDeleted();
+            Database.EnsureDeleted();
 
             Database.EnsureCreated();
         }

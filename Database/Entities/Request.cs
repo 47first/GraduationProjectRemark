@@ -1,17 +1,15 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Database.Entities
 {
     public class Request : BaseEntity
     {
-        [ForeignKey(nameof(Service))]
         public int ServiceId { get; set; }
 
-        [ForeignKey(nameof(User))]
         public int UserId { get; set; }
 
-        //[ForeignKey(nameof(Employee))]
-        //public int EmployeeId { get; set; }
+        public int? EmployeeId { get; set; }
 
         public decimal Price { get; set; }
 
@@ -25,10 +23,16 @@ namespace Database.Entities
 
         public DateTime ServiceEndDate { get; set; }
 
+        [ForeignKey(nameof(ServiceId))]
+        [DeleteBehavior(DeleteBehavior.Restrict)]
         public Service Service { get; set; }
 
+        [ForeignKey(nameof(UserId))]
+        [DeleteBehavior(DeleteBehavior.Restrict)]
         public User User { get; set; }
 
-        //public Employee Employee { get; set; }
+        [ForeignKey(nameof(EmployeeId))]
+        [DeleteBehavior(DeleteBehavior.Restrict)]
+        public Employee Employee { get; set; }
     }
 }

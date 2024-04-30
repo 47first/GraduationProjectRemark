@@ -1,4 +1,5 @@
-﻿using WinFormsApplication.Services.Impl;
+﻿using Database;
+using WinFormsApplication.Services.Impl;
 
 namespace WinFormsApplication.Forms
 {
@@ -8,8 +9,6 @@ namespace WinFormsApplication.Forms
         {
             InitializeComponent();
 
-            pagesControl.TabPages.Remove(usersPage);
-
             if (AuthorizationService.Instance.IsAuthorized == false)
             {
                 OpenAuthorizaitonForm();
@@ -17,11 +16,6 @@ namespace WinFormsApplication.Forms
             else
             {
                 pagesControl.Enabled = true;
-
-                if (UserContext.Instance.CurrentUser.RoleId == 3)
-                {
-                    pagesControl.TabPages.Add(usersPage);
-                }
             }
         }
 
@@ -30,11 +24,14 @@ namespace WinFormsApplication.Forms
             servicesPage1.UpdateData();
         }
 
+        private void requestsPage_Enter(object sender, EventArgs e)
+        {
+            requestsPage1.UpdateData();
+        }
+
         private void quitButton_Click(object sender, EventArgs e)
         {
             AuthorizationService.Instance.Logout();
-
-            pagesControl.TabPages.Remove(usersPage);
 
             OpenAuthorizaitonForm();
         }
@@ -60,16 +57,18 @@ namespace WinFormsApplication.Forms
                 return;
             }
 
-            if (UserContext.Instance.CurrentUser.RoleId == 3)
-            {
-                pagesControl.TabPages.Add(usersPage);
-            }
-
             ShowInTaskbar = true;
             Opacity = 1;
             pagesControl.Enabled = true;
 
             Focus();
+        }
+
+        protected override void OnFormClosed(FormClosedEventArgs e)
+        {
+            base.OnFormClosed(e);
+
+            DatabaseContext.Instance.Dispose();
         }
     }
 }
