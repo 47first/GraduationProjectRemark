@@ -35,7 +35,7 @@ namespace WinFormsApplication.Pages
                     service.Description,
                     category.Name,
                     ImageService.Instance.GetImage(service.ImagePath),
-                    true,
+                    UserContext.Instance.CurrentUser.RoleId == 1,
                     isAdmin);
 
                 serviceView.ServiceUpdated += () => UpdateData();

@@ -142,6 +142,7 @@
             appointButton.TabIndex = 108;
             appointButton.Text = "Назначить на себя";
             appointButton.UseVisualStyleBackColor = true;
+            appointButton.Click += appointButton_Click;
             // 
             // RequestView
             // 

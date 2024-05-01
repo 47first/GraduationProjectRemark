@@ -17,7 +17,11 @@ namespace WinFormsApplication.Pages
 
             using var dbContext = new DatabaseContext();
 
-            if (dbContext.Requests.Any() == false)
+            var requests = UserContext.Instance.CurrentUser.RoleId == 1 ?
+                dbContext.Requests.Where(x => x.UserId == UserContext.Instance.CurrentUser.Id) :
+                dbContext.Requests;
+
+            if (requests.Any() == false)
             {
                 requestsContainer.Controls.Add(notFoundLabel);
 
@@ -26,12 +30,12 @@ namespace WinFormsApplication.Pages
                 return;
             }
 
-            foreach (var request in dbContext.Requests)
+            foreach (var request in requests)
             {
                 var requestView = new RequestView(
                     request,
-                    UserContext.Instance.CurrentUser.RoleId == 1,
-                    UserContext.Instance.CurrentUser.RoleId > 0);
+                    UserContext.Instance.CurrentUser.RoleId == 2,
+                    UserContext.Instance.CurrentUser.RoleId > 1);
 
                 requestsContainer.Controls.Add(requestView);
             }
