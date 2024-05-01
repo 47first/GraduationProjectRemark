@@ -40,17 +40,17 @@
             categoryLabel = new Label();
             categoryComboBox = new ComboBox();
             panel1 = new Panel();
-            errorLabel = new Label();
-            submitButton = new Button();
+            priceInput = new NumericUpDown();
+            amountInput = new NumericUpDown();
+            priceLabel = new Label();
             paymentTypeComboBox = new ComboBox();
             paymentTypeLabel = new Label();
-            priceLabel = new Label();
-            amountInput = new NumericUpDown();
-            numericUpDown1 = new NumericUpDown();
+            errorLabel = new Label();
+            submitButton = new Button();
             ((System.ComponentModel.ISupportInitialize)imageBox).BeginInit();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)priceInput).BeginInit();
             ((System.ComponentModel.ISupportInitialize)amountInput).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             SuspendLayout();
             // 
             // titleLabel
@@ -162,7 +162,7 @@
             // panel1
             // 
             panel1.AutoScroll = true;
-            panel1.Controls.Add(numericUpDown1);
+            panel1.Controls.Add(priceInput);
             panel1.Controls.Add(amountInput);
             panel1.Controls.Add(priceLabel);
             panel1.Controls.Add(paymentTypeComboBox);
@@ -185,6 +185,50 @@
             panel1.Size = new Size(800, 614);
             panel1.TabIndex = 15;
             // 
+            // priceInput
+            // 
+            priceInput.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            priceInput.Location = new Point(12, 485);
+            priceInput.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
+            priceInput.Name = "priceInput";
+            priceInput.Size = new Size(777, 23);
+            priceInput.TabIndex = 22;
+            // 
+            // amountInput
+            // 
+            amountInput.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            amountInput.Location = new Point(12, 185);
+            amountInput.Name = "amountInput";
+            amountInput.Size = new Size(777, 23);
+            amountInput.TabIndex = 21;
+            // 
+            // priceLabel
+            // 
+            priceLabel.AutoSize = true;
+            priceLabel.Location = new Point(12, 467);
+            priceLabel.Name = "priceLabel";
+            priceLabel.Size = new Size(35, 15);
+            priceLabel.TabIndex = 19;
+            priceLabel.Text = "Цена";
+            // 
+            // paymentTypeComboBox
+            // 
+            paymentTypeComboBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            paymentTypeComboBox.FormattingEnabled = true;
+            paymentTypeComboBox.Location = new Point(12, 428);
+            paymentTypeComboBox.Name = "paymentTypeComboBox";
+            paymentTypeComboBox.Size = new Size(777, 23);
+            paymentTypeComboBox.TabIndex = 18;
+            // 
+            // paymentTypeLabel
+            // 
+            paymentTypeLabel.AutoSize = true;
+            paymentTypeLabel.Location = new Point(14, 410);
+            paymentTypeLabel.Name = "paymentTypeLabel";
+            paymentTypeLabel.Size = new Size(71, 15);
+            paymentTypeLabel.TabIndex = 17;
+            paymentTypeLabel.Text = "Тип оплаты";
+            // 
             // errorLabel
             // 
             errorLabel.ForeColor = Color.OrangeRed;
@@ -206,49 +250,6 @@
             submitButton.UseVisualStyleBackColor = true;
             submitButton.Click += submitButton_Click;
             // 
-            // paymentTypeComboBox
-            // 
-            paymentTypeComboBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            paymentTypeComboBox.FormattingEnabled = true;
-            paymentTypeComboBox.Location = new Point(12, 428);
-            paymentTypeComboBox.Name = "paymentTypeComboBox";
-            paymentTypeComboBox.Size = new Size(777, 23);
-            paymentTypeComboBox.TabIndex = 18;
-            // 
-            // paymentTypeLabel
-            // 
-            paymentTypeLabel.AutoSize = true;
-            paymentTypeLabel.Location = new Point(14, 410);
-            paymentTypeLabel.Name = "paymentTypeLabel";
-            paymentTypeLabel.Size = new Size(71, 15);
-            paymentTypeLabel.TabIndex = 17;
-            paymentTypeLabel.Text = "Тип оплаты";
-            // 
-            // priceLabel
-            // 
-            priceLabel.AutoSize = true;
-            priceLabel.Location = new Point(12, 467);
-            priceLabel.Name = "priceLabel";
-            priceLabel.Size = new Size(35, 15);
-            priceLabel.TabIndex = 19;
-            priceLabel.Text = "Цена";
-            // 
-            // amountInput
-            // 
-            amountInput.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            amountInput.Location = new Point(12, 185);
-            amountInput.Name = "amountInput";
-            amountInput.Size = new Size(777, 23);
-            amountInput.TabIndex = 21;
-            // 
-            // numericUpDown1
-            // 
-            numericUpDown1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            numericUpDown1.Location = new Point(12, 485);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(777, 23);
-            numericUpDown1.TabIndex = 22;
-            // 
             // ServiceSetForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -262,8 +263,8 @@
             ((System.ComponentModel.ISupportInitialize)imageBox).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)priceInput).EndInit();
             ((System.ComponentModel.ISupportInitialize)amountInput).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ResumeLayout(false);
         }
 
@@ -287,6 +288,6 @@
         private Label paymentTypeLabel;
         private Label priceLabel;
         private NumericUpDown amountInput;
-        private NumericUpDown numericUpDown1;
+        private NumericUpDown priceInput;
     }
 }

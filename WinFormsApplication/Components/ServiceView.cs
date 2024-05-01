@@ -16,7 +16,6 @@ namespace WinFormsApplication.Components
             string category,
             Image image,
             bool requestButtonVisible,
-            bool deleteButtonVisible,
             bool updateButtonVisible)
         {
             _id = id;
@@ -30,21 +29,7 @@ namespace WinFormsApplication.Components
             categoryLabel.Text = string.Format(categoryLabel.Text, category);
 
             requestButton.Visible = requestButtonVisible;
-            deleteButton.Visible = deleteButtonVisible;
             updateButton.Visible = updateButtonVisible;
-        }
-
-        private void deleteButton_Click(object sender, EventArgs e)
-        {
-            using var dbContext = new DatabaseContext();
-
-            var currentService = dbContext.Services.First(x => x.Id == _id);
-
-            dbContext.Services.Remove(currentService);
-
-            dbContext.SaveChanges();
-
-            ServiceUpdated();
         }
 
         private void updateButton_Click(object sender, EventArgs e)

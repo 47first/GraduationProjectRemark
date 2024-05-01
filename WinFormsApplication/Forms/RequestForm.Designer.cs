@@ -37,8 +37,8 @@
             endTimeLabel = new Label();
             sendButton = new Button();
             splitContainer1 = new SplitContainer();
-            endTimePicker = new DateTimePicker();
             servicePaymentTypeLabel = new Label();
+            endTimePicker = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)serviceImageBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -100,6 +100,7 @@
             startTimePicker.Size = new Size(357, 23);
             startTimePicker.TabIndex = 5;
             startTimePicker.Value = new DateTime(2024, 5, 9, 0, 0, 0, 0);
+            startTimePicker.ValueChanged += startTimePicker_ValueChanged;
             // 
             // startTimeLabel
             // 
@@ -128,6 +129,7 @@
             sendButton.TabIndex = 9;
             sendButton.Text = "Отправить";
             sendButton.UseVisualStyleBackColor = true;
+            sendButton.Click += sendButton_Click;
             // 
             // splitContainer1
             // 
@@ -156,6 +158,15 @@
             splitContainer1.SplitterDistance = 218;
             splitContainer1.TabIndex = 10;
             // 
+            // servicePaymentTypeLabel
+            // 
+            servicePaymentTypeLabel.AutoSize = true;
+            servicePaymentTypeLabel.Location = new Point(12, 60);
+            servicePaymentTypeLabel.Name = "servicePaymentTypeLabel";
+            servicePaymentTypeLabel.Size = new Size(91, 15);
+            servicePaymentTypeLabel.TabIndex = 11;
+            servicePaymentTypeLabel.Text = "Тип оплаты: {0}";
+            // 
             // endTimePicker
             // 
             endTimePicker.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
@@ -166,15 +177,7 @@
             endTimePicker.Size = new Size(357, 23);
             endTimePicker.TabIndex = 10;
             endTimePicker.Value = new DateTime(2024, 5, 9, 0, 0, 0, 0);
-            // 
-            // servicePaymentTypeLabel
-            // 
-            servicePaymentTypeLabel.AutoSize = true;
-            servicePaymentTypeLabel.Location = new Point(12, 60);
-            servicePaymentTypeLabel.Name = "servicePaymentTypeLabel";
-            servicePaymentTypeLabel.Size = new Size(91, 15);
-            servicePaymentTypeLabel.TabIndex = 11;
-            servicePaymentTypeLabel.Text = "Тип оплаты: {0}";
+            endTimePicker.ValueChanged += endTimePicker_ValueChanged;
             // 
             // RequestForm
             // 

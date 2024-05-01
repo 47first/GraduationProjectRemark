@@ -45,11 +45,11 @@
             // 
             completedCheckBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             completedCheckBox.AutoSize = true;
-            completedCheckBox.Location = new Point(438, 252);
+            completedCheckBox.Location = new Point(431, 252);
             completedCheckBox.Name = "completedCheckBox";
-            completedCheckBox.Size = new Size(82, 19);
+            completedCheckBox.Size = new Size(89, 19);
             completedCheckBox.TabIndex = 100;
-            completedCheckBox.Text = "Пройдено";
+            completedCheckBox.Text = "Завершено";
             completedCheckBox.UseVisualStyleBackColor = true;
             completedCheckBox.CheckedChanged += completedCheckBox_CheckedChanged;
             // 

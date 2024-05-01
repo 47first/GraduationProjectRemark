@@ -34,7 +34,6 @@
             requestButton = new Button();
             categoryLabel = new Label();
             updateButton = new Button();
-            deleteButton = new Button();
             descriptionLabel = new Label();
             pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
@@ -71,7 +70,6 @@
             splitContainer1.Panel1.Controls.Add(requestButton);
             splitContainer1.Panel1.Controls.Add(categoryLabel);
             splitContainer1.Panel1.Controls.Add(updateButton);
-            splitContainer1.Panel1.Controls.Add(deleteButton);
             splitContainer1.Panel1.Controls.Add(descriptionLabel);
             // 
             // splitContainer1.Panel2
@@ -121,21 +119,6 @@
             updateButton.Text = "Обновить";
             updateButton.UseVisualStyleBackColor = false;
             updateButton.Click += updateButton_Click;
-            // 
-            // deleteButton
-            // 
-            deleteButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            deleteButton.BackColor = Color.RoyalBlue;
-            deleteButton.FlatStyle = FlatStyle.Popup;
-            deleteButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            deleteButton.ForeColor = SystemColors.ButtonHighlight;
-            deleteButton.Location = new Point(194, 113);
-            deleteButton.Name = "deleteButton";
-            deleteButton.Size = new Size(75, 30);
-            deleteButton.TabIndex = 3;
-            deleteButton.Text = "Удалить";
-            deleteButton.UseVisualStyleBackColor = false;
-            deleteButton.Click += deleteButton_Click;
             // 
             // descriptionLabel
             // 
@@ -192,7 +175,6 @@
         private Label descriptionLabel;
         private Label categoryLabel;
         private Button updateButton;
-        private Button deleteButton;
         private Button requestButton;
     }
 }

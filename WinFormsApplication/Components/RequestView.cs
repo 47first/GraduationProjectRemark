@@ -6,6 +6,7 @@ namespace WinFormsApplication.Components
 {
     public partial class RequestView : UserControl
     {
+        private readonly string _endTimeLabelFormat;
         private int _requestId;
 
         public RequestView(Request request, bool canAppointSelf, bool canComplete)
@@ -13,6 +14,8 @@ namespace WinFormsApplication.Components
             _requestId = request.Id;
 
             InitializeComponent();
+
+            _endTimeLabelFormat = endTimeLabel.Text;
 
             using var dbContext = new DatabaseContext();
 
@@ -25,9 +28,9 @@ namespace WinFormsApplication.Components
             titleLabel.Text = service.Name;
             priceLabel.Text = string.Format(priceLabel.Text, request.Price);
             userNameLabel.Text = string.Format(userNameLabel.Text, GetFio(user));
-            employeeLabelName.Text = string.Format(userNameLabel.Text, GetFio(employeeUser));
+            employeeLabelName.Text = string.Format(employeeLabelName.Text, GetFio(employeeUser));
             createTimeLabel.Text = string.Format(createTimeLabel.Text, request.CreatedDate.ToString());
-            endTimeLabel.Text = string.Format(endTimeLabel.Text, request.ServedDate.ToString());
+            endTimeLabel.Text = string.Format(_endTimeLabelFormat, request.ServedDate.ToString());
 
             servicePeriodLabel.Text = string.Format(
                 servicePeriodLabel.Text,
@@ -58,6 +61,9 @@ namespace WinFormsApplication.Components
             var request = dbContext.Requests.First(x => x.Id == _requestId);
 
             request.IsCompleted = completedCheckBox.Checked;
+            request.ServedDate = completedCheckBox.Checked ? DateTime.Now : null;
+
+            endTimeLabel.Text = string.Format(_endTimeLabelFormat, request.ServedDate.ToString());
 
             dbContext.SaveChanges();
         }

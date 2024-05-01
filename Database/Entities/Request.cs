@@ -15,9 +15,9 @@ namespace Database.Entities
 
         public bool IsCompleted { get; set; }
 
-        public DateOnly CreatedDate { get; set; }
+        public DateTime CreatedDate { get; set; }
 
-        public DateOnly ServedDate { get; set; }
+        public DateTime? ServedDate { get; set; }
 
         public DateTime ServiceStartDate { get; set; }
 

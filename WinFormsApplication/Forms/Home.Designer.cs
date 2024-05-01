@@ -33,11 +33,11 @@
             servicesPage = new TabPage();
             servicesPage1 = new Pages.ServicesPage();
             requestsPage = new TabPage();
+            requestsPage1 = new Pages.RequestsPage();
             header = new ToolStrip();
             quitButton = new ToolStripButton();
             welcomeLabel = new ToolStripLabel();
             panel1 = new Panel();
-            requestsPage1 = new Pages.RequestsPage();
             pagesControl.SuspendLayout();
             servicesPage.SuspendLayout();
             requestsPage.SuspendLayout();
@@ -95,6 +95,14 @@
             requestsPage.UseVisualStyleBackColor = true;
             requestsPage.Enter += requestsPage_Enter;
             // 
+            // requestsPage1
+            // 
+            requestsPage1.Dock = DockStyle.Fill;
+            requestsPage1.Location = new Point(3, 3);
+            requestsPage1.Name = "requestsPage1";
+            requestsPage1.Size = new Size(786, 376);
+            requestsPage1.TabIndex = 0;
+            // 
             // header
             // 
             header.AutoSize = false;
@@ -142,14 +150,6 @@
             panel1.Size = new Size(800, 415);
             panel1.TabIndex = 3;
             // 
-            // requestsPage1
-            // 
-            requestsPage1.Dock = DockStyle.Fill;
-            requestsPage1.Location = new Point(3, 3);
-            requestsPage1.Name = "requestsPage1";
-            requestsPage1.Size = new Size(786, 376);
-            requestsPage1.TabIndex = 0;
-            // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -159,7 +159,7 @@
             Controls.Add(panel1);
             Controls.Add(header);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            MinimumSize = new Size(300, 200);
+            MinimumSize = new Size(600, 400);
             Name = "Home";
             Text = "Коворкинг зона";
             pagesControl.ResumeLayout(false);

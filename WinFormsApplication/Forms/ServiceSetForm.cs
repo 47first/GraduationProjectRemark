@@ -59,7 +59,18 @@ namespace WinFormsApplication.Forms
                 }
             }
 
-            paymentTypeComboBox.Items.AddRange(Enum.GetNames<PaymentType>());
+            foreach (PaymentType value in Enum.GetValues<PaymentType>())
+            {
+                var createdIndex = paymentTypeComboBox.Items.Add(new PaymentTypeItem()
+                {
+                    Value = value
+                });
+
+                if (service is not null && service.PaymentType == value)
+                {
+                    paymentTypeComboBox.SelectedIndex = createdIndex;
+                }
+            }
 
             _validationForm = new ValidationForm();
 
@@ -75,6 +86,12 @@ namespace WinFormsApplication.Forms
 
             _validationForm.MakeBinding(categoryComboBox, categoryLabel,
                 () => categoryComboBox.SelectedItem is CategoryItem);
+
+            _validationForm.MakeBinding(paymentTypeComboBox, paymentTypeLabel,
+                () => paymentTypeComboBox.SelectedItem is PaymentTypeItem);
+
+            _validationForm.MakeBinding(priceInput, priceLabel,
+                ExprHelper.NumberExpr(() => priceInput.Value.ToString(), 0, 10000000));
         }
 
         private void imagesComboBox_SelectedValueChanged(object sender, EventArgs e)
@@ -102,6 +119,8 @@ namespace WinFormsApplication.Forms
                 Amount = (int)amountInput.Value,
                 ImagePath = imagesComboBox.SelectedItem as string,
                 CategoryId = (categoryComboBox.SelectedItem as CategoryItem).Id,
+                PaymentType = (paymentTypeComboBox.SelectedItem as PaymentTypeItem).Value,
+                Price = priceInput.Value
             });
         }
 
@@ -114,6 +133,16 @@ namespace WinFormsApplication.Forms
             public override string ToString()
             {
                 return Name;
+            }
+        }
+
+        private class PaymentTypeItem
+        {
+            public PaymentType Value { get; set; }
+
+            public override string ToString()
+            {
+                return EnumLocalizer.Instance.GetLocalizedEnum(Value);
             }
         }
     }
