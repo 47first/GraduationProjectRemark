@@ -75,9 +75,11 @@ namespace WinFormsApplication.Components
         {
             using var dbContext = new DatabaseContext();
 
-            //var requestForm = new RequestForm();
+            var service = dbContext.Services.First(x => x.Id == _id);
 
-            //requestForm.Show();
+            var requestForm = new RequestForm(service);
+
+            requestForm.Show();
         }
     }
 }

@@ -12,17 +12,21 @@ namespace WinFormsApplication.Forms
         {
             InitializeComponent();
 
-            //startTimePicker.MinDate = DateTime.Now;
-            //endTimePicker.MinDate = DateTime.Now;
+            serviceNameLabel.Text = string.Format(serviceNameLabel.Text, service.Name);
+            serviceImageBox.Image = ImageService.Instance.GetImage(service.ImagePath);
+            servicePaymentTypeLabel.Text = string.Format(servicePaymentTypeLabel.Text, EnumLocalizer.Instance.GetLocalizedEnum(service.PaymentType));
+            startTimePicker.MinDate = DateTime.Now;
+            endTimePicker.MinDate = DateTime.Now.AddHours(1);
 
-            //priceLabel.Text = string.Format(priceLabel.Text, request.Price);
+            priceLabel.Text = string.Format(priceLabel.Text, service.Price);
 
-            //using var dbContext = new DatabaseContext();
+            if (service.PaymentType is Database.Enums.PaymentType.OneTime)
+            {
+                endTimeLabel.Visible = false;
+                endTimePicker.Visible = false;
+            }
 
-            //var service = dbContext.Services.First(x => x.Id == request.ServiceId);
-
-            //serviceNameLabel.Text = string.Format(serviceNameLabel.Text, service.Name);
-            //serviceImageBox.Image = ImageService.Instance.GetImage(service.ImagePath);
+            using var dbContext = new DatabaseContext();
         }
     }
 }

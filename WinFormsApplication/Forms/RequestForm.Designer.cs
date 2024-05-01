@@ -38,6 +38,7 @@
             sendButton = new Button();
             splitContainer1 = new SplitContainer();
             endTimePicker = new DateTimePicker();
+            servicePaymentTypeLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)serviceImageBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -83,7 +84,7 @@
             // priceLabel
             // 
             priceLabel.AutoSize = true;
-            priceLabel.Location = new Point(12, 35);
+            priceLabel.Location = new Point(13, 39);
             priceLabel.Name = "priceLabel";
             priceLabel.Size = new Size(52, 15);
             priceLabel.TabIndex = 4;
@@ -94,7 +95,7 @@
             startTimePicker.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             startTimePicker.CustomFormat = "dd.MM.yyyy HH:mm";
             startTimePicker.Format = DateTimePickerFormat.Custom;
-            startTimePicker.Location = new Point(12, 78);
+            startTimePicker.Location = new Point(12, 103);
             startTimePicker.Name = "startTimePicker";
             startTimePicker.Size = new Size(357, 23);
             startTimePicker.TabIndex = 5;
@@ -103,7 +104,7 @@
             // startTimeLabel
             // 
             startTimeLabel.AutoSize = true;
-            startTimeLabel.Location = new Point(12, 60);
+            startTimeLabel.Location = new Point(12, 85);
             startTimeLabel.Name = "startTimeLabel";
             startTimeLabel.Size = new Size(95, 15);
             startTimeLabel.TabIndex = 6;
@@ -112,7 +113,7 @@
             // endTimeLabel
             // 
             endTimeLabel.AutoSize = true;
-            endTimeLabel.Location = new Point(12, 111);
+            endTimeLabel.Location = new Point(12, 136);
             endTimeLabel.Name = "endTimeLabel";
             endTimeLabel.Size = new Size(115, 15);
             endTimeLabel.TabIndex = 8;
@@ -143,6 +144,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            splitContainer1.Panel2.Controls.Add(servicePaymentTypeLabel);
             splitContainer1.Panel2.Controls.Add(endTimePicker);
             splitContainer1.Panel2.Controls.Add(serviceNameLabel);
             splitContainer1.Panel2.Controls.Add(sendButton);
@@ -159,11 +161,20 @@
             endTimePicker.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             endTimePicker.CustomFormat = "dd.MM.yyyy HH:mm";
             endTimePicker.Format = DateTimePickerFormat.Custom;
-            endTimePicker.Location = new Point(12, 129);
+            endTimePicker.Location = new Point(12, 154);
             endTimePicker.Name = "endTimePicker";
             endTimePicker.Size = new Size(357, 23);
             endTimePicker.TabIndex = 10;
             endTimePicker.Value = new DateTime(2024, 5, 9, 0, 0, 0, 0);
+            // 
+            // servicePaymentTypeLabel
+            // 
+            servicePaymentTypeLabel.AutoSize = true;
+            servicePaymentTypeLabel.Location = new Point(12, 60);
+            servicePaymentTypeLabel.Name = "servicePaymentTypeLabel";
+            servicePaymentTypeLabel.Size = new Size(91, 15);
+            servicePaymentTypeLabel.TabIndex = 11;
+            servicePaymentTypeLabel.Text = "Тип оплаты: {0}";
             // 
             // RequestForm
             // 
@@ -198,5 +209,6 @@
         private Button sendButton;
         private SplitContainer splitContainer1;
         private DateTimePicker endTimePicker;
+        private Label servicePaymentTypeLabel;
     }
 }
