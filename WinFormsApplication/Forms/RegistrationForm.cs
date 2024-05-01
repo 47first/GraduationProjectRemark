@@ -46,7 +46,9 @@ namespace WinFormsApplication.Forms
                 return;
             }
 
-            DatabaseContext.Instance.Users.Add(new()
+            using var dbContext = new DatabaseContext();
+
+            dbContext.Users.Add(new()
             {
                 FirstName = nameTextBox.Text,
                 MiddleName = middleNameTextBox.Text,
@@ -58,12 +60,12 @@ namespace WinFormsApplication.Forms
                 RoleId = 1
             });
 
-            DatabaseContext.Instance.SaveChanges();
+            dbContext.SaveChanges();
 
             AuthorizationService.Instance.SignIn(
                 loginTextBox.Text,
                 passwordTextBox.Text,
-                DatabaseContext.Instance);
+                dbContext);
 
             Close();
         }

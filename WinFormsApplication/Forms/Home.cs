@@ -63,12 +63,5 @@ namespace WinFormsApplication.Forms
 
             Focus();
         }
-
-        protected override void OnFormClosed(FormClosedEventArgs e)
-        {
-            base.OnFormClosed(e);
-
-            DatabaseContext.Instance.Dispose();
-        }
     }
 }

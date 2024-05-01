@@ -21,9 +21,11 @@ namespace WinFormsApplication.Pages
 
             servicesContainer.Controls.Clear();
 
-            var categories = DatabaseContext.Instance.Categories.ToArray();
+            using var dbContext = new DatabaseContext();
 
-            foreach (var service in DatabaseContext.Instance.Services)
+            var categories = dbContext.Categories.ToArray();
+
+            foreach (var service in dbContext.Services)
             {
                 var category = categories.First(x => x.Id == service.CategoryId);
 
@@ -58,11 +60,13 @@ namespace WinFormsApplication.Pages
         {
             var setForm = new ServiceSetForm("Создать услугу", "Создать");
 
+            var dbContext = new DatabaseContext();
+
             setForm.ValidClick += (service) =>
             {
-                DatabaseContext.Instance.Services.Add(service);
+                dbContext.Services.Add(service);
 
-                DatabaseContext.Instance.SaveChanges();
+                dbContext.SaveChanges();
 
                 setForm.Close();
 

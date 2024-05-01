@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Database.Enums;
 
 namespace Database.Entities
 {
@@ -15,6 +16,10 @@ namespace Database.Entities
         public string Description { get; set; } = null!;
 
         public int Amount { get; set; }
+
+        public decimal Price { get; set; }
+
+        public PaymentType PaymentType { get; set; }
 
         [StringLength(64)]
         public string? ImagePath { get; set; }

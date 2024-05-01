@@ -50,10 +50,10 @@
             titleLabel.Dock = DockStyle.Top;
             titleLabel.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
             titleLabel.ForeColor = SystemColors.ControlLightLight;
-            titleLabel.Location = new Point(5, 5);
+            titleLabel.Location = new Point(0, 0);
             titleLabel.Margin = new Padding(10, 0, 10, 0);
             titleLabel.Name = "titleLabel";
-            titleLabel.Size = new Size(541, 35);
+            titleLabel.Size = new Size(551, 35);
             titleLabel.TabIndex = 0;
             titleLabel.Text = "Название название название название название название название название  название название название название название название название название название название название название название название";
             titleLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -63,7 +63,7 @@
             splitContainer1.Dock = DockStyle.Fill;
             splitContainer1.FixedPanel = FixedPanel.Panel2;
             splitContainer1.IsSplitterFixed = true;
-            splitContainer1.Location = new Point(5, 40);
+            splitContainer1.Location = new Point(0, 35);
             splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -77,8 +77,8 @@
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.Controls.Add(pictureBox1);
-            splitContainer1.Size = new Size(541, 136);
-            splitContainer1.SplitterDistance = 351;
+            splitContainer1.Size = new Size(551, 146);
+            splitContainer1.SplitterDistance = 361;
             splitContainer1.TabIndex = 1;
             // 
             // requestButton
@@ -88,20 +88,20 @@
             requestButton.FlatStyle = FlatStyle.Popup;
             requestButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             requestButton.ForeColor = SystemColors.ButtonHighlight;
-            requestButton.Location = new Point(3, 103);
+            requestButton.Location = new Point(3, 113);
             requestButton.Name = "requestButton";
             requestButton.Size = new Size(91, 30);
             requestButton.TabIndex = 4;
             requestButton.Text = "Запросить";
             requestButton.UseVisualStyleBackColor = false;
+            requestButton.Click += requestButton_Click;
             // 
             // categoryLabel
             // 
             categoryLabel.AllowDrop = true;
-            categoryLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             categoryLabel.AutoSize = true;
             categoryLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            categoryLabel.Location = new Point(6, 7);
+            categoryLabel.Location = new Point(5, 10);
             categoryLabel.Name = "categoryLabel";
             categoryLabel.Size = new Size(97, 17);
             categoryLabel.TabIndex = 1;
@@ -114,7 +114,7 @@
             updateButton.FlatStyle = FlatStyle.Popup;
             updateButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             updateButton.ForeColor = SystemColors.ButtonHighlight;
-            updateButton.Location = new Point(265, 103);
+            updateButton.Location = new Point(275, 113);
             updateButton.Name = "updateButton";
             updateButton.Size = new Size(75, 30);
             updateButton.TabIndex = 2;
@@ -129,7 +129,7 @@
             deleteButton.FlatStyle = FlatStyle.Popup;
             deleteButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             deleteButton.ForeColor = SystemColors.ButtonHighlight;
-            deleteButton.Location = new Point(184, 103);
+            deleteButton.Location = new Point(194, 113);
             deleteButton.Name = "deleteButton";
             deleteButton.Size = new Size(75, 30);
             deleteButton.TabIndex = 3;
@@ -144,7 +144,7 @@
             descriptionLabel.ForeColor = SystemColors.InactiveCaptionText;
             descriptionLabel.Location = new Point(5, 27);
             descriptionLabel.Name = "descriptionLabel";
-            descriptionLabel.Size = new Size(337, 73);
+            descriptionLabel.Size = new Size(347, 83);
             descriptionLabel.TabIndex = 0;
             descriptionLabel.Text = resources.GetString("descriptionLabel.Text");
             // 
@@ -157,7 +157,7 @@
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Margin = new Padding(10);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(186, 136);
+            pictureBox1.Size = new Size(186, 146);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -174,7 +174,6 @@
             Controls.Add(titleLabel);
             MinimumSize = new Size(550, 180);
             Name = "ServiceView";
-            Padding = new Padding(5);
             Size = new Size(551, 181);
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel1.PerformLayout();

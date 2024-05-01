@@ -1,5 +1,6 @@
 ﻿using Database;
 using WinFormsApplication.Components;
+using WinFormsApplication.Services.Impl;
 
 namespace WinFormsApplication.Pages
 {
@@ -14,7 +15,9 @@ namespace WinFormsApplication.Pages
         {
             requestsContainer.Controls.Clear();
 
-            if (DatabaseContext.Instance.Requests.Any() == false)
+            using var dbContext = new DatabaseContext();
+
+            if (dbContext.Requests.Any() == false)
             {
                 requestsContainer.Controls.Add(notFoundLabel);
 
@@ -23,9 +26,12 @@ namespace WinFormsApplication.Pages
                 return;
             }
 
-            foreach (var request in DatabaseContext.Instance.Requests)
+            foreach (var request in dbContext.Requests)
             {
-                var requestView = new RequestView(request, true, false);
+                var requestView = new RequestView(
+                    request,
+                    UserContext.Instance.CurrentUser.RoleId == 1,
+                    UserContext.Instance.CurrentUser.RoleId > 0);
 
                 requestsContainer.Controls.Add(requestView);
             }

@@ -1,5 +1,6 @@
 ﻿using Database;
 using Database.Entities;
+using Database.Enums;
 using WinFormsApplication.Helpers;
 using WinFormsApplication.Services.Impl;
 
@@ -21,14 +22,16 @@ namespace WinFormsApplication.Forms
                 _serviceId = service.Id;
                 nameTextBox.Text = service.Name;
                 descriptionTextBox.Text = service.Description;
-                amountTextBox.Text = service.Amount.ToString();
+                amountInput.Value = service.Amount;
             }
 
             Text = title;
             titleLabel.Text = title;
             submitButton.Text = submit;
 
-            foreach (var category in DatabaseContext.Instance.Categories)
+            using var dbContext = new DatabaseContext();
+
+            foreach (var category in dbContext.Categories)
             {
                 var categoryItem = new CategoryItem()
                 {
@@ -56,6 +59,8 @@ namespace WinFormsApplication.Forms
                 }
             }
 
+            paymentTypeComboBox.Items.AddRange(Enum.GetNames<PaymentType>());
+
             _validationForm = new ValidationForm();
 
             _validationForm.MakeBinding(nameTextBox, nameLabel,
@@ -63,8 +68,8 @@ namespace WinFormsApplication.Forms
             _validationForm.MakeBinding(descriptionTextBox, descriptionLabel,
                 ExprHelper.StringLength(() => descriptionTextBox.Text, 5, 64));
 
-            _validationForm.MakeBinding(amountTextBox, amountLabel,
-                ExprHelper.NumberExpr(() => amountTextBox.Text, 0, 10000));
+            _validationForm.MakeBinding(amountInput, amountLabel,
+                ExprHelper.NumberExpr(() => amountInput.Value.ToString(), 0, 10000));
             _validationForm.MakeBinding(imagesComboBox, imageLabel,
                 ExprHelper.StringLength(() => imagesComboBox.SelectedItem as string, 0, 64));
 
@@ -94,7 +99,7 @@ namespace WinFormsApplication.Forms
                 Id = _serviceId,
                 Name = nameTextBox.Text,
                 Description = descriptionTextBox.Text,
-                Amount = int.Parse(amountTextBox.Text),
+                Amount = (int)amountInput.Value,
                 ImagePath = imagesComboBox.SelectedItem as string,
                 CategoryId = (categoryComboBox.SelectedItem as CategoryItem).Id,
             });

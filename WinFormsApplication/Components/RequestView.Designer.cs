@@ -51,6 +51,7 @@
             completedCheckBox.TabIndex = 100;
             completedCheckBox.Text = "Пройдено";
             completedCheckBox.UseVisualStyleBackColor = true;
+            completedCheckBox.CheckedChanged += completedCheckBox_CheckedChanged;
             // 
             // titleLabel
             // 

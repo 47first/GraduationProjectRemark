@@ -36,26 +36,32 @@ namespace WinFormsApplication.Components
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            var currentService = DatabaseContext.Instance.Services.First(x => x.Id == _id);
+            using var dbContext = new DatabaseContext();
 
-            DatabaseContext.Instance.Services.Remove(currentService);
+            var currentService = dbContext.Services.First(x => x.Id == _id);
 
-            DatabaseContext.Instance.SaveChanges();
+            dbContext.Services.Remove(currentService);
+
+            dbContext.SaveChanges();
 
             ServiceUpdated();
         }
 
         private void updateButton_Click(object sender, EventArgs e)
         {
-            var service = DatabaseContext.Instance.Services.FirstOrDefault(x => x.Id == _id);
+            using var dbContext = new DatabaseContext();
+
+            var service = dbContext.Services.FirstOrDefault(x => x.Id == _id);
 
             var setForm = new ServiceSetForm("Обновить услугу", "Обновить", service);
 
             setForm.ValidClick += (service) =>
             {
-                DatabaseContext.Instance.Services.Update(service);
+                using var innerDb = new DatabaseContext();
 
-                DatabaseContext.Instance.SaveChanges();
+                innerDb.Services.Update(service);
+
+                innerDb.SaveChanges();
 
                 setForm.Close();
 
@@ -63,6 +69,15 @@ namespace WinFormsApplication.Components
             };
 
             setForm.Show();
+        }
+
+        private void requestButton_Click(object sender, EventArgs e)
+        {
+            using var dbContext = new DatabaseContext();
+
+            //var requestForm = new RequestForm();
+
+            //requestForm.Show();
         }
     }
 }

@@ -5,6 +5,8 @@
     "Name": "Забронировать место",
     "Description": "Бронирование места в коворкинг зоне",
     "Amount": 4,
+    "Price": 50,
+    "PaymentType": 0,
     "ImagePath": "image.png"
   },
   {
@@ -13,6 +15,8 @@
     "Name": "Забронировать компьютер",
     "Description": "Бронирование места за компьютерным столом",
     "Amount": 2,
+    "Price": 50,
+    "PaymentType": 0,
     "ImagePath": "image.png"
   },
   {
@@ -21,6 +25,8 @@
     "Name": "Обед",
     "Description": "Заказать обед",
     "Amount": 3,
+    "Price": 50,
+    "PaymentType": 0,
     "ImagePath": "image.png"
   }
 ]
