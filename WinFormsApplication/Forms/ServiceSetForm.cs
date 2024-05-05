@@ -23,6 +23,7 @@ namespace WinFormsApplication.Forms
                 nameTextBox.Text = service.Name;
                 descriptionTextBox.Text = service.Description;
                 amountInput.Value = service.Amount;
+                priceInput.Value = service.Price;
             }
 
             Text = title;
@@ -80,7 +81,7 @@ namespace WinFormsApplication.Forms
                 ExprHelper.StringLength(() => descriptionTextBox.Text, 5, 64));
 
             _validationForm.MakeBinding(amountInput, amountLabel,
-                ExprHelper.NumberExpr(() => amountInput.Value.ToString(), 0, 10000));
+                ExprHelper.NumberExpr(() => amountInput.Value, 0, 100));
             _validationForm.MakeBinding(imagesComboBox, imageLabel,
                 ExprHelper.StringLength(() => imagesComboBox.SelectedItem as string, 0, 64));
 
@@ -91,7 +92,7 @@ namespace WinFormsApplication.Forms
                 () => paymentTypeComboBox.SelectedItem is PaymentTypeItem);
 
             _validationForm.MakeBinding(priceInput, priceLabel,
-                ExprHelper.NumberExpr(() => priceInput.Value.ToString(), 0, 10000000));
+                ExprHelper.NumberExpr(() => priceInput.Value, 0, 10000000));
         }
 
         private void imagesComboBox_SelectedValueChanged(object sender, EventArgs e)

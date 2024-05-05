@@ -27,9 +27,11 @@ namespace WinFormsApplication.Helpers
             return () => _emailRegex.IsMatch(getter());
         }
 
-        public static Func<bool> NumberExpr(Func<string> getter, int min, int max)
+        public static Func<bool> NumberExpr<T>(Func<T> getter, T min, T max) where T : IComparable
         {
-            return () => int.TryParse(getter(), out int value) && value >= min && value <= max;
+            var value = getter();
+
+            return () => value.CompareTo(min) >= 0 && value.CompareTo(max) <= 0;
         }
     }
 }

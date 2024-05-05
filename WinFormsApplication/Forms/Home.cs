@@ -61,6 +61,9 @@ namespace WinFormsApplication.Forms
             Opacity = 1;
             pagesControl.Enabled = true;
 
+            requestsPage1.UpdateData();
+            servicesPage1.UpdateData();
+
             Focus();
         }
     }
