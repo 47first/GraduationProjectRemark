@@ -32,7 +32,7 @@ namespace WinFormsApplication.Components
             userNameLabel.Text = string.Format(userNameLabel.Text, GetFio(user));
             employeeLabelName.Text = string.Format(_employeeLabelNameFormat, GetFio(employeeUser));
             createTimeLabel.Text = string.Format(createTimeLabel.Text, request.CreatedDate.ToString());
-            endTimeLabel.Text = string.Format(_endTimeLabelFormat, request.ServedDate.ToString());
+            endTimeLabel.Text = string.Format(_endTimeLabelFormat, request.ServedDate is null ? "Не установлено" : request.ServedDate.ToString());
 
             servicePeriodLabel.Text = string.Format(
                 servicePeriodLabel.Text,
@@ -65,7 +65,7 @@ namespace WinFormsApplication.Components
             request.IsCompleted = completedCheckBox.Checked;
             request.ServedDate = completedCheckBox.Checked ? DateTime.Now : null;
 
-            endTimeLabel.Text = string.Format(_endTimeLabelFormat, request.ServedDate.ToString());
+            endTimeLabel.Text = string.Format(_endTimeLabelFormat, request.ServedDate is null ? "Не установлено" : request.ServedDate.ToString());
 
             dbContext.SaveChanges();
         }

@@ -32,6 +32,8 @@ namespace WinFormsApplication.Services.Impl
                 var image = Image.FromFile(imagePath);
 
                 _imageCache.Add(imagePath, image);
+
+                return image;
             }
 
             return _defaultImage;

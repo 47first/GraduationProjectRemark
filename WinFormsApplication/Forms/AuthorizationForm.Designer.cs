@@ -46,7 +46,7 @@
             titleLabel.ForeColor = SystemColors.Control;
             titleLabel.Location = new Point(0, 0);
             titleLabel.Name = "titleLabel";
-            titleLabel.Size = new Size(244, 43);
+            titleLabel.Size = new Size(304, 43);
             titleLabel.TabIndex = 0;
             titleLabel.Text = "Авторизация";
             titleLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -67,7 +67,7 @@
             loginTextBox.Location = new Point(12, 70);
             loginTextBox.Name = "loginTextBox";
             loginTextBox.PlaceholderText = "Введите логин";
-            loginTextBox.Size = new Size(220, 22);
+            loginTextBox.Size = new Size(280, 22);
             loginTextBox.TabIndex = 2;
             loginTextBox.TextChanged += loginTextBox_TextChanged;
             // 
@@ -88,14 +88,14 @@
             passwordTextBox.Name = "passwordTextBox";
             passwordTextBox.PasswordChar = '*';
             passwordTextBox.PlaceholderText = "Введите пароль";
-            passwordTextBox.Size = new Size(220, 22);
+            passwordTextBox.Size = new Size(280, 22);
             passwordTextBox.TabIndex = 4;
             passwordTextBox.TextChanged += passwordTextBox_TextChanged;
             // 
             // loginButton
             // 
             loginButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            loginButton.Location = new Point(157, 201);
+            loginButton.Location = new Point(217, 201);
             loginButton.Name = "loginButton";
             loginButton.Size = new Size(75, 23);
             loginButton.TabIndex = 5;
@@ -119,9 +119,9 @@
             errorLabel.ForeColor = Color.OrangeRed;
             errorLabel.Location = new Point(12, 145);
             errorLabel.MaximumSize = new Size(220, 53);
-            errorLabel.MinimumSize = new Size(220, 53);
+            errorLabel.MinimumSize = new Size(280, 53);
             errorLabel.Name = "errorLabel";
-            errorLabel.Size = new Size(220, 53);
+            errorLabel.Size = new Size(280, 53);
             errorLabel.TabIndex = 7;
             errorLabel.Text = "Неправильный логин или пароль\r\nВведите саобольный промокод\r\nМегамаркета начинаем\r\n";
             errorLabel.Visible = false;
@@ -130,7 +130,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(244, 236);
+            ClientSize = new Size(304, 236);
             Controls.Add(errorLabel);
             Controls.Add(registrationButton);
             Controls.Add(loginButton);
@@ -140,8 +140,8 @@
             Controls.Add(loginLabel);
             Controls.Add(titleLabel);
             MaximizeBox = false;
-            MaximumSize = new Size(260, 275);
-            MinimumSize = new Size(260, 275);
+            MaximumSize = new Size(320, 275);
+            MinimumSize = new Size(320, 275);
             Name = "AuthorizationForm";
             Text = "Авторизация";
             ResumeLayout(false);
