@@ -35,8 +35,9 @@
             requestsPage = new TabPage();
             requestsPage1 = new Pages.RequestsPage();
             header = new ToolStrip();
-            quitButton = new ToolStripButton();
+            toolStripButton1 = new ToolStripButton();
             welcomeLabel = new ToolStripLabel();
+            quitButton = new ToolStripButton();
             panel1 = new Panel();
             pagesControl.SuspendLayout();
             servicesPage.SuspendLayout();
@@ -107,13 +108,38 @@
             // 
             header.AutoSize = false;
             header.BackColor = Color.RoyalBlue;
-            header.Items.AddRange(new ToolStripItem[] { quitButton, welcomeLabel });
+            header.Items.AddRange(new ToolStripItem[] { toolStripButton1, welcomeLabel, quitButton });
             header.Location = new Point(0, 0);
             header.Name = "header";
             header.RightToLeft = RightToLeft.Yes;
             header.Size = new Size(800, 35);
             header.TabIndex = 1;
             header.Text = "toolStrip1";
+            // 
+            // toolStripButton1
+            // 
+            toolStripButton1.Alignment = ToolStripItemAlignment.Right;
+            toolStripButton1.AutoSize = false;
+            toolStripButton1.AutoToolTip = false;
+            toolStripButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButton1.Image = (Image)resources.GetObject("toolStripButton1.Image");
+            toolStripButton1.ImageTransparentColor = Color.Magenta;
+            toolStripButton1.Name = "toolStripButton1";
+            toolStripButton1.RightToLeft = RightToLeft.Yes;
+            toolStripButton1.Size = new Size(32, 32);
+            toolStripButton1.Text = "SpaceJam";
+            // 
+            // welcomeLabel
+            // 
+            welcomeLabel.Alignment = ToolStripItemAlignment.Right;
+            welcomeLabel.BackColor = Color.Transparent;
+            welcomeLabel.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            welcomeLabel.ForeColor = SystemColors.ControlLightLight;
+            welcomeLabel.Margin = new Padding(10, 1, 0, 2);
+            welcomeLabel.Name = "welcomeLabel";
+            welcomeLabel.RightToLeft = RightToLeft.No;
+            welcomeLabel.Size = new Size(80, 32);
+            welcomeLabel.Text = "Space Jam";
             // 
             // quitButton
             // 
@@ -128,18 +154,6 @@
             quitButton.Size = new Size(76, 35);
             quitButton.Text = "Выйти";
             quitButton.Click += quitButton_Click;
-            // 
-            // welcomeLabel
-            // 
-            welcomeLabel.Alignment = ToolStripItemAlignment.Right;
-            welcomeLabel.BackColor = Color.Transparent;
-            welcomeLabel.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            welcomeLabel.ForeColor = SystemColors.ControlLightLight;
-            welcomeLabel.Margin = new Padding(10, 1, 0, 2);
-            welcomeLabel.Name = "welcomeLabel";
-            welcomeLabel.RightToLeft = RightToLeft.No;
-            welcomeLabel.Size = new Size(122, 32);
-            welcomeLabel.Text = "Коворкинг зона";
             // 
             // panel1
             // 
@@ -161,7 +175,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(600, 400);
             Name = "Home";
-            Text = "Коворкинг зона";
+            Text = "SpaceJam";
             pagesControl.ResumeLayout(false);
             servicesPage.ResumeLayout(false);
             requestsPage.ResumeLayout(false);
@@ -182,5 +196,6 @@
         private ToolStripLabel welcomeLabel;
         private Pages.ServicesPage servicesPage1;
         private Pages.RequestsPage requestsPage1;
+        private ToolStripButton toolStripButton1;
     }
 }
