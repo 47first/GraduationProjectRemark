@@ -1,3 +1,3 @@
 {
-  "Default": "Data Source=DESKTOP-G3R3SBD;Initial Catalog=Test;Integrated Security=True;Trust Server Certificate=True;MultipleActiveResultSets=True"
+  "Default": "Data Source=DESKTOP-G3R3SBD;Initial Catalog=Coworking;Integrated Security=True;Trust Server Certificate=True;MultipleActiveResultSets=True"
 }

@@ -19,6 +19,8 @@ namespace WinFormsApplication.Pages
         {
             var isAdmin = UserContext.Instance.CurrentUser?.RoleId == 3;
 
+            createButton.Visible = isAdmin;
+
             servicesContainer.Controls.Clear();
 
             using var dbContext = new DatabaseContext();
@@ -59,7 +61,7 @@ namespace WinFormsApplication.Pages
         {
             var setForm = new ServiceSetForm("Создать услугу", "Создать");
 
-            var dbContext = new DatabaseContext();
+            using var dbContext = new DatabaseContext();
 
             setForm.ValidClick += (service) =>
             {

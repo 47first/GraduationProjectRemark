@@ -37,6 +37,12 @@ namespace WinFormsApplication.Forms
             endTimePicker.Value = DateTime.Now.AddHours(1);
             startTimePicker.Value = DateTime.Now;
 
+            _validationForm.MakeBinding(startTimePicker, startTimeLabel,
+                () => startTimePicker.Value < endTimePicker.Value);
+
+            _validationForm.MakeBinding(endTimePicker, endTimeLabel,
+                () => startTimePicker.Value < endTimePicker.Value);
+
             priceLabel.Text = string.Format(_priceLabelFormat, CalculatePrice());
         }
 
