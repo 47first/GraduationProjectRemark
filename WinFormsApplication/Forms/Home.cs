@@ -16,6 +16,8 @@ namespace WinFormsApplication.Forms
             else
             {
                 pagesControl.Enabled = true;
+
+                UpdateVisiblePages();
             }
         }
 
@@ -61,10 +63,25 @@ namespace WinFormsApplication.Forms
             Opacity = 1;
             pagesControl.Enabled = true;
 
-            requestsPage1.UpdateData();
-            servicesPage1.UpdateData();
+            UpdateVisiblePages();
 
             Focus();
+        }
+
+        private void UpdateVisiblePages()
+        {
+            pagesControl.TabPages.Clear();
+
+            if (UserContext.Instance.CurrentUser.RoleId != 2)
+            {
+                pagesControl.TabPages.Add(servicesPage);
+
+                servicesPage1.UpdateData();
+            }
+
+            pagesControl.TabPages.Add(requestsPage);
+
+            requestsPage1.UpdateData();
         }
     }
 }
