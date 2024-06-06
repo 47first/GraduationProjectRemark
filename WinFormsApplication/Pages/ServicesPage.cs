@@ -27,7 +27,7 @@ namespace WinFormsApplication.Pages
 
             var categories = dbContext.Categories.ToArray();
 
-            foreach (var service in dbContext.Services)
+            foreach (var service in dbContext.Services.Where(x => x.IsDeleted == false))
             {
                 var category = categories.First(x => x.Id == service.CategoryId);
 

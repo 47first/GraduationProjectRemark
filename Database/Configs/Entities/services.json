@@ -7,7 +7,8 @@
     "Amount": 4,
     "Price": 50,
     "PaymentType": 0,
-    "ImagePath": "image.png"
+    "ImagePath": "image.png",
+    "IsDeleted": false
   },
   {
     "Id": 2,
@@ -17,7 +18,8 @@
     "Amount": 2,
     "Price": 50,
     "PaymentType": 0,
-    "ImagePath": "image.png"
+    "ImagePath": "image.png",
+    "IsDeleted": false
   },
   {
     "Id": 3,
@@ -27,6 +29,7 @@
     "Amount": 3,
     "Price": 50,
     "PaymentType": 0,
-    "ImagePath": "image.png"
+    "ImagePath": "image.png",
+    "IsDeleted": false
   }
 ]

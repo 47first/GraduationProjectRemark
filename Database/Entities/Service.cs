@@ -21,6 +21,8 @@ namespace Database.Entities
 
         public PaymentType PaymentType { get; set; }
 
+        public bool IsDeleted { get; set; }
+
         [StringLength(64)]
         public string? ImagePath { get; set; }
 

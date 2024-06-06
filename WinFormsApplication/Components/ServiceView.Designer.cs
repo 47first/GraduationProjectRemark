@@ -36,6 +36,7 @@
             updateButton = new Button();
             descriptionLabel = new Label();
             pictureBox1 = new PictureBox();
+            deleteButton = new Button();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -67,6 +68,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            splitContainer1.Panel1.Controls.Add(deleteButton);
             splitContainer1.Panel1.Controls.Add(requestButton);
             splitContainer1.Panel1.Controls.Add(categoryLabel);
             splitContainer1.Panel1.Controls.Add(updateButton);
@@ -112,9 +114,9 @@
             updateButton.FlatStyle = FlatStyle.Popup;
             updateButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             updateButton.ForeColor = SystemColors.ButtonHighlight;
-            updateButton.Location = new Point(275, 113);
+            updateButton.Location = new Point(263, 113);
             updateButton.Name = "updateButton";
-            updateButton.Size = new Size(75, 30);
+            updateButton.Size = new Size(87, 30);
             updateButton.TabIndex = 2;
             updateButton.Text = "Обновить";
             updateButton.UseVisualStyleBackColor = false;
@@ -144,6 +146,21 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
+            // 
+            // deleteButton
+            // 
+            deleteButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            deleteButton.BackColor = Color.RoyalBlue;
+            deleteButton.FlatStyle = FlatStyle.Popup;
+            deleteButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            deleteButton.ForeColor = SystemColors.ButtonHighlight;
+            deleteButton.Location = new Point(166, 113);
+            deleteButton.Name = "deleteButton";
+            deleteButton.Size = new Size(91, 30);
+            deleteButton.TabIndex = 5;
+            deleteButton.Text = "Удалить";
+            deleteButton.UseVisualStyleBackColor = false;
+            deleteButton.Click += deleteButton_Click;
             // 
             // ServiceView
             // 
@@ -176,5 +193,6 @@
         private Label categoryLabel;
         private Button updateButton;
         private Button requestButton;
+        private Button deleteButton;
     }
 }

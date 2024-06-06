@@ -66,5 +66,20 @@ namespace WinFormsApplication.Components
 
             requestForm.Show();
         }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            using var dbContext = new DatabaseContext();
+
+            var service = dbContext.Services.First(x => x.Id == _id);
+
+            service.IsDeleted = true;
+
+            dbContext.Services.Update(service);
+
+            dbContext.SaveChanges();
+
+            ServiceUpdated();
+        }
     }
 }
