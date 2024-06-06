@@ -39,6 +39,15 @@ namespace WinFormsApplication.Services.Impl
             return _defaultImage;
         }
 
+        public string SaveImage(string fullPath)
+        {
+            var fileName = Path.GetFileName(fullPath);
+
+            File.Move(fullPath, GetImagePath(fileName));
+
+            return fileName;
+        }
+
         public IEnumerable<string> GetImagesList()
         {
             var imagesPath = Path.Combine(Environment.CurrentDirectory, IMAGES_RELATIVE_DIRECTORY);

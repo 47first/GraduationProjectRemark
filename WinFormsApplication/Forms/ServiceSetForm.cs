@@ -1,6 +1,8 @@
-﻿using Database;
+﻿using System.ComponentModel;
+using Database;
 using Database.Entities;
 using Database.Enums;
+using Microsoft.EntityFrameworkCore.Update;
 using WinFormsApplication.Helpers;
 using WinFormsApplication.Services.Impl;
 
@@ -9,6 +11,7 @@ namespace WinFormsApplication.Forms
     public partial class ServiceSetForm : Form
     {
         private int _serviceId;
+        private string _imagePath;
         private ValidationForm _validationForm;
 
         public event Action<Service> ValidClick = delegate { };
@@ -20,6 +23,7 @@ namespace WinFormsApplication.Forms
             if (service is not null)
             {
                 _serviceId = service.Id;
+                _imagePath = service.ImagePath;
                 nameTextBox.Text = service.Name;
                 descriptionTextBox.Text = service.Description;
                 amountInput.Value = service.Amount;
@@ -50,16 +54,6 @@ namespace WinFormsApplication.Forms
 
             var fileNames = ImageService.Instance.GetImagesList();
 
-            foreach (var fileName in fileNames)
-            {
-                var createdIndex = imagesComboBox.Items.Add(fileName);
-
-                if (service is not null && fileName == service.ImagePath)
-                {
-                    imagesComboBox.SelectedIndex = createdIndex;
-                }
-            }
-
             foreach (PaymentType value in Enum.GetValues<PaymentType>())
             {
                 var createdIndex = paymentTypeComboBox.Items.Add(new PaymentTypeItem()
@@ -82,8 +76,6 @@ namespace WinFormsApplication.Forms
 
             _validationForm.MakeBinding(amountInput, amountLabel,
                 ExprHelper.NumberExpr(() => amountInput.Value, 0, 100));
-            _validationForm.MakeBinding(imagesComboBox, imageLabel,
-                ExprHelper.StringLength(() => imagesComboBox.SelectedItem as string, 0, 64));
 
             _validationForm.MakeBinding(categoryComboBox, categoryLabel,
                 () => categoryComboBox.SelectedItem is CategoryItem);
@@ -93,13 +85,6 @@ namespace WinFormsApplication.Forms
 
             _validationForm.MakeBinding(priceInput, priceLabel,
                 ExprHelper.NumberExpr(() => priceInput.Value, 0, 10000000));
-        }
-
-        private void imagesComboBox_SelectedValueChanged(object sender, EventArgs e)
-        {
-            var fileName = imagesComboBox.SelectedItem as string;
-
-            imageBox.Image = ImageService.Instance.GetImage(fileName);
         }
 
         private void submitButton_Click(object sender, EventArgs e)
@@ -118,7 +103,7 @@ namespace WinFormsApplication.Forms
                 Name = nameTextBox.Text,
                 Description = descriptionTextBox.Text,
                 Amount = (int)amountInput.Value,
-                ImagePath = imagesComboBox.SelectedItem as string,
+                ImagePath = _imagePath,
                 CategoryId = (categoryComboBox.SelectedItem as CategoryItem).Id,
                 PaymentType = (paymentTypeComboBox.SelectedItem as PaymentTypeItem).Value,
                 Price = priceInput.Value
@@ -144,6 +129,18 @@ namespace WinFormsApplication.Forms
             public override string ToString()
             {
                 return EnumLocalizer.Instance.GetLocalizedEnum(Value);
+            }
+        }
+
+        private void imageBox_DoubleClick(object sender, EventArgs e)
+        {
+            var result = openFileDialog.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                _imagePath = ImageService.Instance.SaveImage(openFileDialog.FileName);
+
+                imageBox.Image = ImageService.Instance.GetImage(_imagePath);
             }
         }
     }

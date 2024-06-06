@@ -36,7 +36,6 @@
             amountLabel = new Label();
             imageLabel = new Label();
             imageBox = new PictureBox();
-            imagesComboBox = new ComboBox();
             categoryLabel = new Label();
             categoryComboBox = new ComboBox();
             panel1 = new Panel();
@@ -47,6 +46,7 @@
             paymentTypeLabel = new Label();
             errorLabel = new Label();
             submitButton = new Button();
+            openFileDialog = new OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)imageBox).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)priceInput).BeginInit();
@@ -121,25 +121,18 @@
             // 
             // imageBox
             // 
+            imageBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             imageBox.BackColor = Color.Lavender;
             imageBox.BackgroundImageLayout = ImageLayout.Zoom;
+            imageBox.Cursor = Cursors.Hand;
             imageBox.Image = Properties.Images.people;
             imageBox.Location = new Point(12, 240);
             imageBox.Name = "imageBox";
-            imageBox.Size = new Size(149, 100);
+            imageBox.Size = new Size(774, 100);
             imageBox.SizeMode = PictureBoxSizeMode.Zoom;
             imageBox.TabIndex = 11;
             imageBox.TabStop = false;
-            // 
-            // imagesComboBox
-            // 
-            imagesComboBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            imagesComboBox.FormattingEnabled = true;
-            imagesComboBox.Location = new Point(167, 240);
-            imagesComboBox.Name = "imagesComboBox";
-            imagesComboBox.Size = new Size(622, 23);
-            imagesComboBox.TabIndex = 12;
-            imagesComboBox.SelectedIndexChanged += imagesComboBox_SelectedValueChanged;
+            imageBox.DoubleClick += imageBox_DoubleClick;
             // 
             // categoryLabel
             // 
@@ -175,7 +168,6 @@
             panel1.Controls.Add(descriptionLabel);
             panel1.Controls.Add(categoryLabel);
             panel1.Controls.Add(descriptionTextBox);
-            panel1.Controls.Add(imagesComboBox);
             panel1.Controls.Add(amountLabel);
             panel1.Controls.Add(imageBox);
             panel1.Controls.Add(imageLabel);
@@ -250,6 +242,10 @@
             submitButton.UseVisualStyleBackColor = true;
             submitButton.Click += submitButton_Click;
             // 
+            // openFileDialog
+            // 
+            openFileDialog.FileName = "image";
+            // 
             // ServiceSetForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -278,7 +274,6 @@
         private Label amountLabel;
         private Label imageLabel;
         private PictureBox imageBox;
-        private ComboBox imagesComboBox;
         private Label categoryLabel;
         private ComboBox categoryComboBox;
         private Panel panel1;
@@ -289,5 +284,6 @@
         private Label priceLabel;
         private NumericUpDown amountInput;
         private NumericUpDown priceInput;
+        private OpenFileDialog openFileDialog;
     }
 }
