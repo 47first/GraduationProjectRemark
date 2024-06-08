@@ -102,15 +102,15 @@ namespace WinFormsApplication.Pages
         {
             var servicesCountPairs = new Dictionary<Service, int>();
 
-            foreach (var service in context.Services)
+            foreach (var request in context.Requests.Include(x => x.Service))
             {
-                if (servicesCountPairs.ContainsKey(service))
+                if (servicesCountPairs.ContainsKey(request.Service))
                 {
-                    servicesCountPairs[service]++;
+                    servicesCountPairs[request.Service]++;
                 }
                 else
                 {
-                    servicesCountPairs.Add(service, 1);
+                    servicesCountPairs.Add(request.Service, 1);
                 }
             }
 

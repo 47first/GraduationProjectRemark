@@ -23,7 +23,10 @@ namespace WinFormsApplication.Forms
             if (service is not null)
             {
                 _serviceId = service.Id;
+
                 _imagePath = service.ImagePath;
+                imageBox.Image = ImageService.Instance.GetImage(_imagePath);
+
                 nameTextBox.Text = service.Name;
                 descriptionTextBox.Text = service.Description;
                 amountInput.Value = service.Amount;

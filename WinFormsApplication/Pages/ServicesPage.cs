@@ -38,6 +38,7 @@ namespace WinFormsApplication.Pages
                     category.Name,
                     ImageService.Instance.GetImage(service.ImagePath),
                     UserContext.Instance.CurrentUser.RoleId == 1,
+                    isAdmin,
                     isAdmin);
 
                 serviceView.ServiceUpdated += () => UpdateData();

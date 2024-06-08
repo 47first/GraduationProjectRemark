@@ -45,7 +45,7 @@
             // 
             completedCheckBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             completedCheckBox.AutoSize = true;
-            completedCheckBox.Location = new Point(431, 252);
+            completedCheckBox.Location = new Point(548, 259);
             completedCheckBox.Name = "completedCheckBox";
             completedCheckBox.Size = new Size(89, 19);
             completedCheckBox.TabIndex = 100;
@@ -61,7 +61,7 @@
             titleLabel.ForeColor = SystemColors.ButtonHighlight;
             titleLabel.Location = new Point(0, 0);
             titleLabel.Name = "titleLabel";
-            titleLabel.Size = new Size(533, 35);
+            titleLabel.Size = new Size(650, 35);
             titleLabel.TabIndex = 1;
             titleLabel.Text = "Название";
             titleLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -99,7 +99,7 @@
             // serviceImageBox
             // 
             serviceImageBox.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            serviceImageBox.Location = new Point(308, 38);
+            serviceImageBox.Location = new Point(425, 38);
             serviceImageBox.Name = "serviceImageBox";
             serviceImageBox.Size = new Size(222, 201);
             serviceImageBox.SizeMode = PictureBoxSizeMode.Zoom;
@@ -136,7 +136,7 @@
             // appointButton
             // 
             appointButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            appointButton.Location = new Point(9, 248);
+            appointButton.Location = new Point(14, 255);
             appointButton.Name = "appointButton";
             appointButton.Size = new Size(121, 23);
             appointButton.TabIndex = 108;
@@ -159,9 +159,9 @@
             Controls.Add(priceLabel);
             Controls.Add(titleLabel);
             Controls.Add(completedCheckBox);
-            MinimumSize = new Size(533, 248);
+            MinimumSize = new Size(535, 250);
             Name = "RequestView";
-            Size = new Size(533, 283);
+            Size = new Size(650, 290);
             ((System.ComponentModel.ISupportInitialize)serviceImageBox).EndInit();
             ResumeLayout(false);
             PerformLayout();

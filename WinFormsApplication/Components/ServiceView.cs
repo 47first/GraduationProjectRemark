@@ -1,4 +1,5 @@
 ﻿using Database;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using WinFormsApplication.Forms;
 
 namespace WinFormsApplication.Components
@@ -16,6 +17,7 @@ namespace WinFormsApplication.Components
             string category,
             Image image,
             bool requestButtonVisible,
+            bool deleteButtonVisible,
             bool updateButtonVisible)
         {
             _id = id;
@@ -29,6 +31,7 @@ namespace WinFormsApplication.Components
             categoryLabel.Text = string.Format(categoryLabel.Text, category);
 
             requestButton.Visible = requestButtonVisible;
+            deleteButton.Visible = deleteButtonVisible;
             updateButton.Visible = updateButtonVisible;
         }
 
@@ -73,9 +76,12 @@ namespace WinFormsApplication.Components
 
             var service = dbContext.Services.First(x => x.Id == _id);
 
-            service.IsDeleted = true;
+            foreach (var request in dbContext.Requests.Where(x => x.ServiceId == _id))
+            {
+                dbContext.Requests.Remove(request);
+            }
 
-            dbContext.Services.Update(service);
+            dbContext.Services.Remove(service);
 
             dbContext.SaveChanges();
 
