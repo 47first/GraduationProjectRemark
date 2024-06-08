@@ -30,26 +30,31 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             pagesControl = new TabControl();
-            servicesPage = new TabPage();
-            servicesPage1 = new Pages.ServicesPage();
-            requestsPage = new TabPage();
-            requestsPage1 = new Pages.RequestsPage();
+            servicesPageTab = new TabPage();
+            servicesPage = new Pages.ServicesPage();
+            requestsPageTab = new TabPage();
+            requestsPage = new Pages.RequestsPage();
+            statisticsPageTab = new TabPage();
+            statisticsPage = new Pages.StatisticsPage();
             header = new ToolStrip();
             toolStripButton1 = new ToolStripButton();
             welcomeLabel = new ToolStripLabel();
             quitButton = new ToolStripButton();
             panel1 = new Panel();
+            sqlDataAdapter1 = new Microsoft.Data.SqlClient.SqlDataAdapter();
             pagesControl.SuspendLayout();
-            servicesPage.SuspendLayout();
-            requestsPage.SuspendLayout();
+            servicesPageTab.SuspendLayout();
+            requestsPageTab.SuspendLayout();
+            statisticsPageTab.SuspendLayout();
             header.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // pagesControl
             // 
-            pagesControl.Controls.Add(servicesPage);
-            pagesControl.Controls.Add(requestsPage);
+            pagesControl.Controls.Add(servicesPageTab);
+            pagesControl.Controls.Add(requestsPageTab);
+            pagesControl.Controls.Add(statisticsPageTab);
             pagesControl.Dock = DockStyle.Fill;
             pagesControl.Enabled = false;
             pagesControl.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
@@ -61,48 +66,67 @@
             pagesControl.Size = new Size(800, 415);
             pagesControl.TabIndex = 0;
             // 
-            // servicesPage
+            // servicesPageTab
             // 
-            servicesPage.BackColor = SystemColors.Window;
-            servicesPage.Controls.Add(servicesPage1);
-            servicesPage.Font = new Font("Segoe UI", 6F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            servicesPage.Location = new Point(4, 29);
-            servicesPage.Name = "servicesPage";
-            servicesPage.Padding = new Padding(3);
-            servicesPage.Size = new Size(792, 382);
-            servicesPage.TabIndex = 0;
-            servicesPage.Text = "Услуги";
-            servicesPage.UseVisualStyleBackColor = true;
-            servicesPage.Enter += servicesPage_Enter;
+            servicesPageTab.BackColor = SystemColors.Window;
+            servicesPageTab.Controls.Add(servicesPage);
+            servicesPageTab.Font = new Font("Segoe UI", 6F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            servicesPageTab.Location = new Point(4, 29);
+            servicesPageTab.Name = "servicesPageTab";
+            servicesPageTab.Padding = new Padding(3);
+            servicesPageTab.Size = new Size(792, 382);
+            servicesPageTab.TabIndex = 0;
+            servicesPageTab.Text = "Услуги";
+            servicesPageTab.UseVisualStyleBackColor = true;
+            servicesPageTab.Enter += servicesPageTab_Enter;
             // 
             // servicesPage1
             // 
-            servicesPage1.Dock = DockStyle.Fill;
-            servicesPage1.Location = new Point(3, 3);
-            servicesPage1.Name = "servicesPage1";
-            servicesPage1.Size = new Size(786, 376);
-            servicesPage1.TabIndex = 0;
+            servicesPage.Dock = DockStyle.Fill;
+            servicesPage.Location = new Point(3, 3);
+            servicesPage.Name = "servicesPage1";
+            servicesPage.Size = new Size(786, 376);
+            servicesPage.TabIndex = 0;
             // 
-            // requestsPage
+            // requestsPageTab
             // 
-            requestsPage.Controls.Add(requestsPage1);
-            requestsPage.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            requestsPage.Location = new Point(4, 29);
-            requestsPage.Name = "requestsPage";
-            requestsPage.Padding = new Padding(3);
-            requestsPage.Size = new Size(792, 382);
-            requestsPage.TabIndex = 1;
-            requestsPage.Text = "Запросы";
-            requestsPage.UseVisualStyleBackColor = true;
-            requestsPage.Enter += requestsPage_Enter;
+            requestsPageTab.Controls.Add(requestsPage);
+            requestsPageTab.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            requestsPageTab.Location = new Point(4, 29);
+            requestsPageTab.Name = "requestsPageTab";
+            requestsPageTab.Padding = new Padding(3);
+            requestsPageTab.Size = new Size(792, 382);
+            requestsPageTab.TabIndex = 1;
+            requestsPageTab.Text = "Запросы";
+            requestsPageTab.UseVisualStyleBackColor = true;
+            requestsPageTab.Enter += requestsPageTab_Enter;
             // 
             // requestsPage1
             // 
-            requestsPage1.Dock = DockStyle.Fill;
-            requestsPage1.Location = new Point(3, 3);
-            requestsPage1.Name = "requestsPage1";
-            requestsPage1.Size = new Size(786, 376);
-            requestsPage1.TabIndex = 0;
+            requestsPage.Dock = DockStyle.Fill;
+            requestsPage.Location = new Point(3, 3);
+            requestsPage.Name = "requestsPage1";
+            requestsPage.Size = new Size(786, 376);
+            requestsPage.TabIndex = 0;
+            // 
+            // statisticsPageTab
+            // 
+            statisticsPageTab.Controls.Add(statisticsPage);
+            statisticsPageTab.Location = new Point(4, 29);
+            statisticsPageTab.Name = "statisticsPageTab";
+            statisticsPageTab.Size = new Size(792, 382);
+            statisticsPageTab.TabIndex = 2;
+            statisticsPageTab.Text = "Статистика";
+            statisticsPageTab.UseVisualStyleBackColor = true;
+            statisticsPageTab.Enter += statisticsPageTab_Enter;
+            // 
+            // statisticsPage1
+            // 
+            statisticsPage.Dock = DockStyle.Fill;
+            statisticsPage.Location = new Point(0, 0);
+            statisticsPage.Name = "statisticsPage1";
+            statisticsPage.Size = new Size(792, 382);
+            statisticsPage.TabIndex = 0;
             // 
             // header
             // 
@@ -177,8 +201,9 @@
             Name = "Home";
             Text = "SpaceJam";
             pagesControl.ResumeLayout(false);
-            servicesPage.ResumeLayout(false);
-            requestsPage.ResumeLayout(false);
+            servicesPageTab.ResumeLayout(false);
+            requestsPageTab.ResumeLayout(false);
+            statisticsPageTab.ResumeLayout(false);
             header.ResumeLayout(false);
             header.PerformLayout();
             panel1.ResumeLayout(false);
@@ -188,14 +213,17 @@
         #endregion
 
         private TabControl pagesControl;
-        private TabPage servicesPage;
-        private TabPage requestsPage;
+        private TabPage servicesPageTab;
+        private TabPage requestsPageTab;
         private ToolStrip header;
         private ToolStripButton quitButton;
         private Panel panel1;
         private ToolStripLabel welcomeLabel;
-        private Pages.ServicesPage servicesPage1;
-        private Pages.RequestsPage requestsPage1;
+        private Pages.ServicesPage servicesPage;
+        private Pages.RequestsPage requestsPage;
         private ToolStripButton toolStripButton1;
+        private TabPage statisticsPageTab;
+        private Microsoft.Data.SqlClient.SqlDataAdapter sqlDataAdapter1;
+        private Pages.StatisticsPage statisticsPage;
     }
 }

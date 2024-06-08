@@ -21,14 +21,19 @@ namespace WinFormsApplication.Forms
             }
         }
 
-        private void servicesPage_Enter(object sender, EventArgs e)
+        private void servicesPageTab_Enter(object sender, EventArgs e)
         {
-            servicesPage1.UpdateData();
+            servicesPage.UpdateData();
         }
 
-        private void requestsPage_Enter(object sender, EventArgs e)
+        private void requestsPageTab_Enter(object sender, EventArgs e)
         {
-            requestsPage1.UpdateData();
+            requestsPage.UpdateData();
+        }
+
+        private void statisticsPageTab_Enter(object sender, EventArgs e)
+        {
+            statisticsPage.UpdateData();
         }
 
         private void quitButton_Click(object sender, EventArgs e)
@@ -74,14 +79,21 @@ namespace WinFormsApplication.Forms
 
             if (UserContext.Instance.CurrentUser.RoleId != 2)
             {
-                pagesControl.TabPages.Add(servicesPage);
+                pagesControl.TabPages.Add(servicesPageTab);
 
-                servicesPage1.UpdateData();
+                servicesPage.UpdateData();
             }
 
-            pagesControl.TabPages.Add(requestsPage);
+            pagesControl.TabPages.Add(requestsPageTab);
 
-            requestsPage1.UpdateData();
+            requestsPage.UpdateData();
+
+            if (UserContext.Instance.CurrentUser.RoleId == 3)
+            {
+                pagesControl.TabPages.Add(statisticsPageTab);
+
+                statisticsPage.UpdateData();
+            }
         }
     }
 }

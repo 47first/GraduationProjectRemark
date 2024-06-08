@@ -2,7 +2,7 @@
   {
     "Id": 1,
     "ServiceId": 1,
-    "UserId": 1,
+    "UserId": 3,
     "EmployeeId": 1,
     "Price": 500.0,
     "IsCompleted": false,
@@ -14,7 +14,7 @@
   {
     "Id": 2,
     "ServiceId": 1,
-    "UserId": 1,
+    "UserId": 3,
     "EmployeeId": 1,
     "Price": 10.0,
     "IsCompleted": true,
@@ -26,7 +26,7 @@
   {
     "Id": 3,
     "ServiceId": 1,
-    "UserId": 1,
+    "UserId": 3,
     "EmployeeId": 1,
     "Price": 50.0,
     "IsCompleted": true,
