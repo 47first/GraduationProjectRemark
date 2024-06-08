@@ -32,13 +32,13 @@
             label2 = new Label();
             createButton = new Button();
             label1 = new Label();
+            createdRequestAmountLabel = new Label();
             totalCompletedRequests = new Label();
             totalRequestRevenueLabel = new Label();
             topUsefullCategories = new Label();
             mostActiveEmployeeLabel = new Label();
             mostActiveUserLabel = new Label();
             mostPopularServiceLabel = new Label();
-            createdRequestAmountLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)splitContainer).BeginInit();
             splitContainer.Panel1.SuspendLayout();
             splitContainer.Panel2.SuspendLayout();
@@ -111,6 +111,16 @@
             label1.TabIndex = 2;
             label1.Text = "Статистика";
             // 
+            // createdRequestAmountLabel
+            // 
+            createdRequestAmountLabel.AutoSize = true;
+            createdRequestAmountLabel.Font = new Font("Segoe UI", 11F);
+            createdRequestAmountLabel.Location = new Point(7, 144);
+            createdRequestAmountLabel.Name = "createdRequestAmountLabel";
+            createdRequestAmountLabel.Size = new Size(245, 20);
+            createdRequestAmountLabel.TabIndex = 6;
+            createdRequestAmountLabel.Text = "Количество созданных заявок: {0}";
+            // 
             // totalCompletedRequests
             // 
             totalCompletedRequests.AutoSize = true;
@@ -127,9 +137,9 @@
             totalRequestRevenueLabel.Font = new Font("Segoe UI", 11F);
             totalRequestRevenueLabel.Location = new Point(7, 110);
             totalRequestRevenueLabel.Name = "totalRequestRevenueLabel";
-            totalRequestRevenueLabel.Size = new Size(224, 20);
+            totalRequestRevenueLabel.Size = new Size(253, 20);
             totalRequestRevenueLabel.TabIndex = 4;
-            totalRequestRevenueLabel.Text = "Общая сумма за все время: {0}";
+            totalRequestRevenueLabel.Text = "Общая сумма за все время: {0} руб";
             // 
             // topUsefullCategories
             // 
@@ -170,16 +180,6 @@
             mostPopularServiceLabel.Size = new Size(270, 20);
             mostPopularServiceLabel.TabIndex = 0;
             mostPopularServiceLabel.Text = "Самая часто используемая услуга: {0}";
-            // 
-            // createdRequestAmountLabel
-            // 
-            createdRequestAmountLabel.AutoSize = true;
-            createdRequestAmountLabel.Font = new Font("Segoe UI", 11F);
-            createdRequestAmountLabel.Location = new Point(7, 144);
-            createdRequestAmountLabel.Name = "createdRequestAmountLabel";
-            createdRequestAmountLabel.Size = new Size(245, 20);
-            createdRequestAmountLabel.TabIndex = 6;
-            createdRequestAmountLabel.Text = "Количество созданных заявок: {0}";
             // 
             // StatisticsPage
             // 

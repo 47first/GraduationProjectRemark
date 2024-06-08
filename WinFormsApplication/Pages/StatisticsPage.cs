@@ -116,7 +116,7 @@ namespace WinFormsApplication.Pages
 
             if (servicesCountPairs.Count < 1)
             {
-                return "Не найден...";
+                return "Не найдена...";
             }
 
             var mostPopularService = servicesCountPairs.MaxBy(x => x.Value).Key;
@@ -157,7 +157,7 @@ namespace WinFormsApplication.Pages
 
             if (categoryCountPairs.Count < 1)
             {
-                return "Не найдено...";
+                return "Не найдены...";
             }
 
             var categoryNames = categoryCountPairs
