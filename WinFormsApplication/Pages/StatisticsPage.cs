@@ -14,6 +14,7 @@ namespace WinFormsApplication.Pages
         private readonly string _totalRequestRevenueLabelFormat;
         private readonly string _createdRequestAmountLabelFormat;
         private readonly string _topUsefullCategoriesFormat;
+        private readonly string _activeCoworkingZonesFormat;
 
         public StatisticsPage()
         {
@@ -26,6 +27,7 @@ namespace WinFormsApplication.Pages
             _totalRequestRevenueLabelFormat = totalRequestRevenueLabel.Text;
             _createdRequestAmountLabelFormat = createdRequestAmountLabel.Text;
             _topUsefullCategoriesFormat = topUsefullCategories.Text;
+            _activeCoworkingZonesFormat = activeCoworkingZonesLabel.Text;
         }
 
         public void UpdateData()
@@ -39,7 +41,13 @@ namespace WinFormsApplication.Pages
                 totalRequestRevenueLabel.Text = string.Format(_totalRequestRevenueLabelFormat, GetTotalRequestRevenue(dbContext));
                 createdRequestAmountLabel.Text = string.Format(_createdRequestAmountLabelFormat, GetCreatedRequestAmount(dbContext));
                 topUsefullCategories.Text = string.Format(_topUsefullCategoriesFormat, GetTopUsefullCategories(dbContext));
+                activeCoworkingZonesLabel.Text = string.Format(_activeCoworkingZonesFormat, GetActiveCoworkingZones(dbContext));
             }
+        }
+
+        private string GetActiveCoworkingZones(DatabaseContext dbContext)
+        {
+            return dbContext.CoworkingZones.Count().ToString();
         }
 
         private string GetMostActiveEmployee(DatabaseContext context)

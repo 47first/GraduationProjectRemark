@@ -32,6 +32,7 @@
             label2 = new Label();
             createButton = new Button();
             label1 = new Label();
+            activeCoworkingZonesLabel = new Label();
             createdRequestAmountLabel = new Label();
             totalCompletedRequests = new Label();
             totalRequestRevenueLabel = new Label();
@@ -63,6 +64,7 @@
             // 
             // splitContainer.Panel2
             // 
+            splitContainer.Panel2.Controls.Add(activeCoworkingZonesLabel);
             splitContainer.Panel2.Controls.Add(createdRequestAmountLabel);
             splitContainer.Panel2.Controls.Add(totalCompletedRequests);
             splitContainer.Panel2.Controls.Add(totalRequestRevenueLabel);
@@ -111,11 +113,21 @@
             label1.TabIndex = 2;
             label1.Text = "Статистика";
             // 
+            // activeCoworkingZonesLabel
+            // 
+            activeCoworkingZonesLabel.AutoSize = true;
+            activeCoworkingZonesLabel.Font = new Font("Segoe UI", 11F);
+            activeCoworkingZonesLabel.Location = new Point(7, 108);
+            activeCoworkingZonesLabel.Name = "activeCoworkingZonesLabel";
+            activeCoworkingZonesLabel.Size = new Size(207, 20);
+            activeCoworkingZonesLabel.TabIndex = 7;
+            activeCoworkingZonesLabel.Text = "Активных коворкинг зон: {0}";
+            // 
             // createdRequestAmountLabel
             // 
             createdRequestAmountLabel.AutoSize = true;
             createdRequestAmountLabel.Font = new Font("Segoe UI", 11F);
-            createdRequestAmountLabel.Location = new Point(7, 144);
+            createdRequestAmountLabel.Location = new Point(7, 172);
             createdRequestAmountLabel.Name = "createdRequestAmountLabel";
             createdRequestAmountLabel.Size = new Size(245, 20);
             createdRequestAmountLabel.TabIndex = 6;
@@ -125,7 +137,7 @@
             // 
             totalCompletedRequests.AutoSize = true;
             totalCompletedRequests.Font = new Font("Segoe UI", 11F);
-            totalCompletedRequests.Location = new Point(7, 177);
+            totalCompletedRequests.Location = new Point(7, 205);
             totalCompletedRequests.Name = "totalCompletedRequests";
             totalCompletedRequests.Size = new Size(316, 20);
             totalCompletedRequests.TabIndex = 5;
@@ -135,7 +147,7 @@
             // 
             totalRequestRevenueLabel.AutoSize = true;
             totalRequestRevenueLabel.Font = new Font("Segoe UI", 11F);
-            totalRequestRevenueLabel.Location = new Point(7, 110);
+            totalRequestRevenueLabel.Location = new Point(7, 138);
             totalRequestRevenueLabel.Name = "totalRequestRevenueLabel";
             totalRequestRevenueLabel.Size = new Size(253, 20);
             totalRequestRevenueLabel.TabIndex = 4;
@@ -145,7 +157,7 @@
             // 
             topUsefullCategories.AutoSize = true;
             topUsefullCategories.Font = new Font("Segoe UI", 11F);
-            topUsefullCategories.Location = new Point(7, 210);
+            topUsefullCategories.Location = new Point(7, 238);
             topUsefullCategories.Name = "topUsefullCategories";
             topUsefullCategories.Size = new Size(267, 20);
             topUsefullCategories.TabIndex = 3;
@@ -210,5 +222,6 @@
         private Label totalRequestRevenueLabel;
         private Label totalCompletedRequests;
         private Label createdRequestAmountLabel;
+        private Label activeCoworkingZonesLabel;
     }
 }
