@@ -6,8 +6,8 @@
     "Description": "Бронирование места в коворкинг зоне",
     "Amount": 4,
     "Price": 50,
-    "PaymentType": 0,
-    "ImagePath": "image.png",
+    "PaymentType": 1,
+    "ImagePath": "coworkingZone.png",
     "IsDeleted": false
   },
   {
@@ -17,8 +17,8 @@
     "Description": "Бронирование места за компьютерным столом",
     "Amount": 2,
     "Price": 50,
-    "PaymentType": 0,
-    "ImagePath": "image.png",
+    "PaymentType": 1,
+    "ImagePath": "default.png",
     "IsDeleted": false
   },
   {
@@ -29,7 +29,7 @@
     "Amount": 3,
     "Price": 50,
     "PaymentType": 0,
-    "ImagePath": "image.png",
+    "ImagePath": "food.png",
     "IsDeleted": false
   }
 ]

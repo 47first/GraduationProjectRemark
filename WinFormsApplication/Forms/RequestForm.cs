@@ -37,13 +37,17 @@ namespace WinFormsApplication.Forms
             endTimePicker.Value = DateTime.Now.AddHours(1);
             startTimePicker.Value = DateTime.Now;
 
-            _validationForm.MakeBinding(startTimePicker, startTimeLabel,
-                () => startTimePicker.Value < endTimePicker.Value);
+            _validationForm.MakeBinding(startTimePicker, startTimeLabel, VerifyRequestRange);
 
-            _validationForm.MakeBinding(endTimePicker, endTimeLabel,
-                () => startTimePicker.Value < endTimePicker.Value);
+            _validationForm.MakeBinding(endTimePicker, endTimeLabel, VerifyRequestRange);
 
             priceLabel.Text = string.Format(_priceLabelFormat, CalculatePrice());
+        }
+
+        private bool VerifyRequestRange()
+        {
+            return startTimePicker.Value < endTimePicker.Value
+                && (endTimePicker.Value - startTimePicker.Value) > TimeSpan.FromMinutes(15);
         }
 
         private void sendButton_Click(object sender, EventArgs e)
@@ -54,6 +58,19 @@ namespace WinFormsApplication.Forms
             }
 
             using var dbContext = new DatabaseContext();
+
+            if (_isOneTimePay == false)
+            {
+                var inRangeRequest = dbContext.Requests.FirstOrDefault(x =>
+                (startTimePicker.Value <= x.ServiceEndDate) && (x.ServiceStartDate <= endTimePicker.Value));
+
+                if (inRangeRequest is not null)
+                {
+                    MessageBox.Show($"Выбранный вами период времени на данную услугу уже занят! Попробуйте выбрать другой диапазон времени.");
+
+                    return;
+                }
+            }
 
             dbContext.Requests.Add(new Request()
             {

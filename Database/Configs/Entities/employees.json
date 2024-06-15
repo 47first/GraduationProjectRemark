@@ -1,17 +1,17 @@
 [
   {
     "Id": 1,
-    "UserId": 1,
-    "PositionId": 1
-  },
-  {
-    "Id": 2,
     "UserId": 2,
     "PositionId": 1
   },
   {
+    "Id": 2,
+    "UserId": 5,
+    "PositionId": 2
+  },
+  {
     "Id": 3,
-    "UserId": 3,
-    "PositionId": 1
+    "UserId": 6,
+    "PositionId": 3
   }
 ]

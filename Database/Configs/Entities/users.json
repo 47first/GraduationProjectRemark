@@ -52,7 +52,7 @@
     "Email": "ivan.smirnov@example.com",
     "Login": "ivan_smirnov",
     "Password": "smirnov4567",
-    "RoleId": 1
+    "RoleId": 2
   },
   {
     "Id": 6,
@@ -63,7 +63,7 @@
     "Email": "maria.petrova@example.com",
     "Login": "maria_petrova",
     "Password": "petrova890",
-    "RoleId": 1
+    "RoleId": 2
   },
   {
     "Id": 7,

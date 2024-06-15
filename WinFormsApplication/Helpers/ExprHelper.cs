@@ -9,7 +9,7 @@ namespace WinFormsApplication.Helpers
 
         public static Func<bool> StringLength(Func<string> getter, int minLength, int maxLength)
         {
-            return () => string.IsNullOrEmpty(getter()) == false && getter().Length > minLength && getter().Length < maxLength;
+            return () => string.IsNullOrEmpty(getter().Trim()) == false && getter().Trim().Length > minLength && getter().Trim().Length < maxLength;
         }
 
         public static Func<bool> NullableStringLength(Func<string> getter, int maxLength)

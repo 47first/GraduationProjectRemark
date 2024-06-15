@@ -45,8 +45,11 @@
 	</ItemGroup>
 	
 	<ItemGroup>
+	  <None Remove="Images\coworkingZone.png" />
+	  <None Remove="Images\coworkingZone2.png" />
+	  <None Remove="Images\coworkingZone3.png" />
 	  <None Remove="Images\default.png" />
-	  <None Remove="Images\One_Piece,_Volume_61_Cover_%28Japanese%29.jpg" />
+	  <None Remove="Images\food.png" />
 	</ItemGroup>
 	
 	<ItemGroup>

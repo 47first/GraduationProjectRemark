@@ -3,13 +3,13 @@
     "Id": 1,
     "ServiceId": 1,
     "UserId": 3,
-    "EmployeeId": 2,
+    "EmployeeId": 1,
     "Price": 500.0,
     "IsCompleted": false,
     "CreatedDate": "2024-05-20",
-    "ServedDate": "2024-05-20",
-    "ServiceStartDate": "0001-01-01T00:00:00",
-    "ServiceEndDate": "0001-01-01T00:00:00"
+    "ServedDate": null,
+    "ServiceStartDate": "2024-06-06T12:00:00",
+    "ServiceEndDate": "2024-06-06T14:00:00"
   },
   {
     "Id": 2,
@@ -19,20 +19,20 @@
     "Price": 10.0,
     "IsCompleted": true,
     "CreatedDate": "2024-05-20",
-    "ServedDate": "2024-05-20",
-    "ServiceStartDate": "0001-01-01T00:00:00",
-    "ServiceEndDate": "0001-01-01T00:00:00"
+    "ServedDate": "2024-06-20",
+    "ServiceStartDate": "2024-06-06T14:00:00",
+    "ServiceEndDate": "2024-06-06T16:00:00"
   },
   {
     "Id": 3,
     "ServiceId": 1,
     "UserId": 3,
-    "EmployeeId": 2,
+    "EmployeeId": 3,
     "Price": 50.0,
     "IsCompleted": true,
     "CreatedDate": "2024-05-20",
-    "ServedDate": "2024-05-20",
-    "ServiceStartDate": "0001-01-01T00:00:00",
-    "ServiceEndDate": "0001-01-01T00:00:00"
+    "ServedDate": "2024-06-20",
+    "ServiceStartDate": "2024-06-06T16:00:00",
+    "ServiceEndDate": "2024-06-06T17:00:00"
   }
 ]
