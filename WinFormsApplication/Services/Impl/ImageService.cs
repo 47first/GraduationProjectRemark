@@ -41,9 +41,9 @@ namespace WinFormsApplication.Services.Impl
 
         public string SaveImage(string fullPath)
         {
-            var fileName = Path.GetFileName(fullPath);
+            var fileName = Guid.NewGuid().ToString();
 
-            File.Move(fullPath, GetImagePath(fileName));
+            File.Copy(fullPath, GetImagePath(fileName));
 
             return fileName;
         }

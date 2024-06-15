@@ -33,14 +33,12 @@
             nameTextBox = new TextBox();
             descriptionTextBox = new TextBox();
             descriptionLabel = new Label();
-            amountLabel = new Label();
             imageLabel = new Label();
             imageBox = new PictureBox();
             categoryLabel = new Label();
             categoryComboBox = new ComboBox();
             panel1 = new Panel();
             priceInput = new NumericUpDown();
-            amountInput = new NumericUpDown();
             priceLabel = new Label();
             paymentTypeComboBox = new ComboBox();
             paymentTypeLabel = new Label();
@@ -50,7 +48,6 @@
             ((System.ComponentModel.ISupportInitialize)imageBox).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)priceInput).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)amountInput).BeginInit();
             SuspendLayout();
             // 
             // titleLabel
@@ -101,19 +98,10 @@
             descriptionLabel.TabIndex = 5;
             descriptionLabel.Text = "Описание";
             // 
-            // amountLabel
-            // 
-            amountLabel.AutoSize = true;
-            amountLabel.Location = new Point(14, 167);
-            amountLabel.Name = "amountLabel";
-            amountLabel.Size = new Size(72, 15);
-            amountLabel.TabIndex = 7;
-            amountLabel.Text = "Количество";
-            // 
             // imageLabel
             // 
             imageLabel.AutoSize = true;
-            imageLabel.Location = new Point(14, 222);
+            imageLabel.Location = new Point(12, 170);
             imageLabel.Name = "imageLabel";
             imageLabel.Size = new Size(83, 15);
             imageLabel.TabIndex = 10;
@@ -126,7 +114,7 @@
             imageBox.BackgroundImageLayout = ImageLayout.Zoom;
             imageBox.Cursor = Cursors.Hand;
             imageBox.Image = Properties.Images.people;
-            imageBox.Location = new Point(12, 240);
+            imageBox.Location = new Point(10, 188);
             imageBox.Name = "imageBox";
             imageBox.Size = new Size(774, 100);
             imageBox.SizeMode = PictureBoxSizeMode.Zoom;
@@ -137,7 +125,7 @@
             // categoryLabel
             // 
             categoryLabel.AutoSize = true;
-            categoryLabel.Location = new Point(14, 354);
+            categoryLabel.Location = new Point(12, 302);
             categoryLabel.Name = "categoryLabel";
             categoryLabel.Size = new Size(63, 15);
             categoryLabel.TabIndex = 13;
@@ -147,7 +135,7 @@
             // 
             categoryComboBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             categoryComboBox.FormattingEnabled = true;
-            categoryComboBox.Location = new Point(12, 372);
+            categoryComboBox.Location = new Point(10, 320);
             categoryComboBox.Name = "categoryComboBox";
             categoryComboBox.Size = new Size(777, 23);
             categoryComboBox.TabIndex = 14;
@@ -156,7 +144,6 @@
             // 
             panel1.AutoScroll = true;
             panel1.Controls.Add(priceInput);
-            panel1.Controls.Add(amountInput);
             panel1.Controls.Add(priceLabel);
             panel1.Controls.Add(paymentTypeComboBox);
             panel1.Controls.Add(paymentTypeLabel);
@@ -168,36 +155,27 @@
             panel1.Controls.Add(descriptionLabel);
             panel1.Controls.Add(categoryLabel);
             panel1.Controls.Add(descriptionTextBox);
-            panel1.Controls.Add(amountLabel);
             panel1.Controls.Add(imageBox);
             panel1.Controls.Add(imageLabel);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 43);
             panel1.Name = "panel1";
-            panel1.Size = new Size(800, 614);
+            panel1.Size = new Size(800, 567);
             panel1.TabIndex = 15;
             // 
             // priceInput
             // 
             priceInput.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            priceInput.Location = new Point(12, 485);
+            priceInput.Location = new Point(10, 433);
             priceInput.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
             priceInput.Name = "priceInput";
             priceInput.Size = new Size(777, 23);
             priceInput.TabIndex = 22;
             // 
-            // amountInput
-            // 
-            amountInput.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            amountInput.Location = new Point(12, 185);
-            amountInput.Name = "amountInput";
-            amountInput.Size = new Size(777, 23);
-            amountInput.TabIndex = 21;
-            // 
             // priceLabel
             // 
             priceLabel.AutoSize = true;
-            priceLabel.Location = new Point(12, 467);
+            priceLabel.Location = new Point(10, 415);
             priceLabel.Name = "priceLabel";
             priceLabel.Size = new Size(35, 15);
             priceLabel.TabIndex = 19;
@@ -207,7 +185,7 @@
             // 
             paymentTypeComboBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             paymentTypeComboBox.FormattingEnabled = true;
-            paymentTypeComboBox.Location = new Point(12, 428);
+            paymentTypeComboBox.Location = new Point(10, 376);
             paymentTypeComboBox.Name = "paymentTypeComboBox";
             paymentTypeComboBox.Size = new Size(777, 23);
             paymentTypeComboBox.TabIndex = 18;
@@ -215,7 +193,7 @@
             // paymentTypeLabel
             // 
             paymentTypeLabel.AutoSize = true;
-            paymentTypeLabel.Location = new Point(14, 410);
+            paymentTypeLabel.Location = new Point(12, 358);
             paymentTypeLabel.Name = "paymentTypeLabel";
             paymentTypeLabel.Size = new Size(71, 15);
             paymentTypeLabel.TabIndex = 17;
@@ -224,7 +202,7 @@
             // errorLabel
             // 
             errorLabel.ForeColor = Color.OrangeRed;
-            errorLabel.Location = new Point(12, 519);
+            errorLabel.Location = new Point(12, 470);
             errorLabel.Name = "errorLabel";
             errorLabel.Size = new Size(774, 57);
             errorLabel.TabIndex = 16;
@@ -234,7 +212,7 @@
             // submitButton
             // 
             submitButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            submitButton.Location = new Point(694, 579);
+            submitButton.Location = new Point(690, 530);
             submitButton.Name = "submitButton";
             submitButton.Size = new Size(94, 23);
             submitButton.TabIndex = 15;
@@ -250,7 +228,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 657);
+            ClientSize = new Size(800, 610);
             Controls.Add(panel1);
             Controls.Add(titleLabel);
             MinimumSize = new Size(500, 300);
@@ -260,7 +238,6 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)priceInput).EndInit();
-            ((System.ComponentModel.ISupportInitialize)amountInput).EndInit();
             ResumeLayout(false);
         }
 
@@ -271,7 +248,6 @@
         private TextBox nameTextBox;
         private TextBox descriptionTextBox;
         private Label descriptionLabel;
-        private Label amountLabel;
         private Label imageLabel;
         private PictureBox imageBox;
         private Label categoryLabel;
@@ -282,7 +258,6 @@
         private ComboBox paymentTypeComboBox;
         private Label paymentTypeLabel;
         private Label priceLabel;
-        private NumericUpDown amountInput;
         private NumericUpDown priceInput;
         private OpenFileDialog openFileDialog;
     }

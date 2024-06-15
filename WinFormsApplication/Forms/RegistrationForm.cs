@@ -15,11 +15,11 @@ namespace WinFormsApplication.Forms
             _validationForm = new ValidationForm();
 
             _validationForm.MakeBinding(nameTextBox, nameLabel,
-                ExprHelper.StringLength(() => nameTextBox.Text, 5, 64));
+                ExprHelper.StringLength(() => nameTextBox.Text, 2, 64));
             _validationForm.MakeBinding(middleNameTextBox, middleNameLabel,
-                ExprHelper.StringLength(() => middleNameTextBox.Text, 5, 64));
+                ExprHelper.StringLength(() => middleNameTextBox.Text, 2, 64));
             _validationForm.MakeBinding(lastNameTextBox, lastNameLabel,
-                ExprHelper.StringLength(() => lastNameTextBox.Text, 5, 64));
+                ExprHelper.StringLength(() => lastNameTextBox.Text, 2, 64));
 
             _validationForm.MakeBinding(phoneTextBox, phoneLabel,
                 ExprHelper.PhoneExpr(() => phoneTextBox.Text));

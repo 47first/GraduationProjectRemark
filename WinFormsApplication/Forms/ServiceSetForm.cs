@@ -1,8 +1,6 @@
-﻿using System.ComponentModel;
-using Database;
+﻿using Database;
 using Database.Entities;
 using Database.Enums;
-using Microsoft.EntityFrameworkCore.Update;
 using WinFormsApplication.Helpers;
 using WinFormsApplication.Services.Impl;
 
@@ -29,7 +27,6 @@ namespace WinFormsApplication.Forms
 
                 nameTextBox.Text = service.Name;
                 descriptionTextBox.Text = service.Description;
-                amountInput.Value = service.Amount;
                 priceInput.Value = service.Price;
             }
 
@@ -77,9 +74,6 @@ namespace WinFormsApplication.Forms
             _validationForm.MakeBinding(descriptionTextBox, descriptionLabel,
                 ExprHelper.StringLength(() => descriptionTextBox.Text, 5, 64));
 
-            _validationForm.MakeBinding(amountInput, amountLabel,
-                ExprHelper.NumberExpr(() => amountInput.Value, 0, 100));
-
             _validationForm.MakeBinding(categoryComboBox, categoryLabel,
                 () => categoryComboBox.SelectedItem is CategoryItem);
 
@@ -105,7 +99,6 @@ namespace WinFormsApplication.Forms
                 Id = _serviceId,
                 Name = nameTextBox.Text,
                 Description = descriptionTextBox.Text,
-                Amount = (int)amountInput.Value,
                 ImagePath = _imagePath,
                 CategoryId = (categoryComboBox.SelectedItem as CategoryItem).Id,
                 PaymentType = (paymentTypeComboBox.SelectedItem as PaymentTypeItem).Value,

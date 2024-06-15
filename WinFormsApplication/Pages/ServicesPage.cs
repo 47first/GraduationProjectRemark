@@ -62,10 +62,10 @@ namespace WinFormsApplication.Pages
         {
             var setForm = new ServiceSetForm("Создать услугу", "Создать");
 
-            using var dbContext = new DatabaseContext();
-
             setForm.ValidClick += (service) =>
             {
+                using var dbContext = new DatabaseContext();
+
                 dbContext.Services.Add(service);
 
                 dbContext.SaveChanges();
